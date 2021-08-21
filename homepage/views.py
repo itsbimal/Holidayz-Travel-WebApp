@@ -5,3 +5,8 @@ from django.contrib import messages
 # Create your views here.
 def index_page(request):
     return render(request, 'homepage/index.html')
+
+def pricing_page(request):
+    return render(request, 'homepage/pricing.html')
+
+
