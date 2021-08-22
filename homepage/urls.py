@@ -9,6 +9,7 @@ def testfcn(request):
 
 urlpatterns = [
     path('', views.index_page),
+    path('account/', views.account),
     path('pricing/',views.pricing_page),
-
+    path('home/', testfcn)
 ]

@@ -1,0 +1,81 @@
+{% extends 'home_layout.html' %}
+{% load static %}
+{% block title %}
+    Account
+{% endblock title %}
+
+{% block header %}
+    <header id="account">
+        <div class="login-reg">
+            <div class="title-text">
+                <div class="title login text-primary">Login Form</div>
+                <div class="title signup text-primary">Signup Form</div>
+            </div>
+            <div class="form-container">
+                <div class="slide-controls">
+                    <input type="radio" name="slide" id="login" checked>
+                    <input type="radio" name="slide" id="signup">
+                    <label for="login" class="slide login">Login</label>
+                    <label for="signup" class="slide signup">Signup</label>
+                    <div class="slider-tab"></div>
+                </div>
+                <div class="form-inner">
+                    <form action="#" class="login">
+
+                        <div class="field">
+                            <input type="text" placeholder="Username" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <div class="pass-link">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer slide"></div>
+                            <input type="submit" value="Login">
+                        </div>
+                        <div class="signup-link fs-4">
+                            Not a member? <a href="">Signup now</a>
+                        </div>
+
+                        {% for message in messages %}
+                            <div class="alert alert-success mt-3" role="alert">
+                                <p id="messages">{{ message }} <i class="fa fa-check-circle" aria-hidden="true"></i></p>
+                            </div>
+                        {% endfor %}
+
+
+                    </form>
+                    <form action="" method="post" class="form">
+                        {% csrf_token %}
+                        <div class="field">
+                            <input id="reg_name" name="reg_name" type="text" placeholder="Name" required>
+                        </div>
+                        <div class="field">
+                            <input id="reg_uname" name="reg_uname" type="text" placeholder="Username" required>
+                        </div>
+                        <div class="field">
+                            <input id="reg_pass" name="reg_pass" type="password" placeholder="Password" required>
+                        </div>
+                        <div class="field">
+                            <input id="reg_confpass" name="reg_confpass" type="password" placeholder="Confirm password"
+                                   required>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <div><input type="submit" value="Signup"></div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock js_file %}
+
