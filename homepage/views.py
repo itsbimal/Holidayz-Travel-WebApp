@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from .models import *
+
 
 # Create your views here.
 def index_page(request):
     return render(request, 'homepage/index.html')
+
 
 def pricing_page(request):
     return render(request, 'homepage/pricing.html')
@@ -30,3 +33,12 @@ def account(request):
     #         return HttpResponse("Failed Bro!")
 
     return render(request, 'homepage/account.html')
+
+
+# category
+def country_list(request):
+    data = Country.objects.all().order_by('-id')
+    context = {
+        'data': data
+    }
+    return render(request, 'homepage/country.html',context)

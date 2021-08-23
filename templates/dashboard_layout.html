@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {# All CDN Links#}
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"/>
+   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+    <title>User Dashboard</title>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+    <symbol id="home" viewBox="0 0 16 16">
+        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+    </symbol>
+    <symbol id="table" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+    </symbol>
+    <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </symbol>
+    <symbol id="speedometer" viewBox="0 0 16 16">
+        <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+        <path fill-rule="evenodd"
+              d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+    </symbol>
+
+</svg>
+
+
+<div class="navbar d-flex justify-content-around p-2" id="nav-baar">
+    <a href="/" class="d-block p-1 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
+       data-bs-placement="right">
+        <!-- <img src="/untitled_1_1_29.png" alt=""> -->
+        <h1>Dashboard</h1>
+    </a>
+
+    </a>
+    <ul class="nav nav-pills nav-flush">
+        <li class="nav-item rounded">
+            <a href="#" class="nav-link active py-3 border-bottom rounded-3" aria-current="page" title="Dashboard"
+               data-bs-toggle="tooltip" data-bs-placement="bottom">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Home">
+                    <use xlink:href="#speedometer"/>
+                </svg>
+            </a>
+        </li>
+        <li class="ms-4">
+            <a href="#" class="nav-link py-3 border-bottom" title="My Booking data-bs-toggle="tooltip"
+               data-bs-placement="bottom">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard">
+                    <use xlink:href="#home"/>
+                </svg>
+            </a>
+        </li>
+        <li class="ms-4">
+            <a href="#" class="nav-link py-3 border-bottom" title="My Requests" data-bs-toggle="tooltip"
+               data-bs-placement="bottom">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Orders">
+                    <use xlink:href="#table"/>
+                </svg>
+            </a>
+        </li>
+        <li class="ms-4">
+            <a href="#" class="nav-link py-3 border-bottom" title="My Profile" data-bs-toggle="tooltip"
+               data-bs-placement="bottom">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Customers">
+                    <use xlink:href="#people-circle"/>
+                </svg>
+            </a>
+        </li>
+    </ul>
+
+    <div class="dropdown d-flex">
+        <input class="form-control me-2 srch-bar" type="search" placeholder="Search" aria-label="Search">
+        <a href="#"
+           class="d-flex align-items-center justify-content-center p-2 link-dark text-decoration-none dropdown-toggle"
+           id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+            <li><a class="dropdown-item" href="#">My Profile</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+    </div>
+
+
+</div>
+
+
+{#<link rel="stylesheet" href="{% static 'js/main.js' %}">#}
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+
+</body>
+</html>

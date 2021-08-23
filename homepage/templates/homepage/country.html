@@ -1,0 +1,51 @@
+{% extends 'home_layout.html' %}
+{% load static %}
+
+{% block header %}
+
+        <section id="featured-box">
+        <div class="container my-5">
+            <div class="intro">
+                <h1 class="display-2 fw-semibold py-4 ">Browse Catalog</h1>
+            </div>
+            <div class="row">
+                {% if data %}
+                    {% for country in data %}
+
+                    <div class="col-md-4" onclick="location.href='/account'">
+                        <div class="country-card"><img src="/{{country.image}}" class="img img-responsive">
+                            <div class="country-name">{{ country.title }}</div>
+                            <div class="desc">{{ country.desc }}</div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+{#    <section class="header">#}
+{#        <main class="container my-4">#}
+{#            <h1 class="display-3 fw-bold">Browse All Countries</h1>#}
+            <div class="row">
+                {% if data %}
+                {% for country in data %}
+{#                    <div class="col-md-3 mb-4">#}
+{#                        <div class="card shadow">#}
+{#                            <a href="#"><img src="{{ country.image }}" alt=""></a>#}
+{#                            <div class="card-body">#}
+{#                                <h6 class="card-text"><a href="#">{{ country.title }}</a></h6>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                {% endfor %}
+                {% endif %}
+{#            </div>#}
+{#            #}
+{#            #}
+{#        </main>#}
+{#    </section>#}
+
+{% endblock header%}
