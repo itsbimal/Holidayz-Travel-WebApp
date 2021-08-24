@@ -11,6 +11,7 @@
     backdrop-filter: blur(5rem);
     background-color: rgba(84, 93, 87, 0.5);
 }
+
 .navbar-nav li{
     padding-right: 10px;
     padding-left: 10px;

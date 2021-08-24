@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from .models import *
+from dashboard.models import Country,Offer,Place
 
 
 # Create your views here.

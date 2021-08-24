@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'livereload',
     'django.contrib.staticfiles',
     'homepage',
-    'dashboard'
+    'dashboard',
+    'bootstrapform'
 ]
 
 MIDDLEWARE = [
