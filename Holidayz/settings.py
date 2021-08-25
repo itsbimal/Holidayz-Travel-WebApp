@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Logout Function
+
+LOGIN_URL = '/'
+
 
 # Application definition
 
@@ -40,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage',
     'dashboard',
-    'bootstrapform'
+    'bootstrapform',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

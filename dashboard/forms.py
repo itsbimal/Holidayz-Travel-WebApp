@@ -5,3 +5,4 @@ class AddCountry(ModelForm):
     class Meta:
         model = Country
         fields = '__all__'
+

@@ -8,7 +8,7 @@ admin.site.register(Offer)
 
 
 class PlaceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'offers', 'price', 'status')
+    list_display = ('offers', 'price', 'status')
     list_editable = ('status',)
 
 

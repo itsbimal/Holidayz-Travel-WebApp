@@ -122,3 +122,7 @@ main {
     /* width: 700px; */
     margin-top: 7px;
 }
+
+.help-block{
+    color: red;
+}

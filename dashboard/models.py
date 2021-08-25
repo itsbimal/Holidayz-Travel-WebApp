@@ -3,12 +3,12 @@ from django.db import models
 
 # Country
 class Country(models.Model):
-    title = models.CharField(max_length=120)
-    desc = models.CharField(max_length=60)
-    image = models.ImageField(upload_to="static/uploads/country")
+    Name = models.CharField(max_length=120)
+    Description = models.CharField(max_length=60)
+    Image = models.ImageField(upload_to="static/uploads/country")
 
     def __str__(self):
-        return self.title
+        return self.Name
 
 # Offers included
 class Offer(models.Model):

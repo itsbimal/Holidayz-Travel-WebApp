@@ -1,4 +1,6 @@
 {% extends 'home_layout.html' %}
+{% load widget_tweaks %}
+{% load bootstrap %}
 {% load static %}
 {% block title %}
     Account
@@ -8,25 +10,24 @@
     <header id="account">
         <div class="login-reg">
             <div class="title-text">
-                <div class="title login text-primary">Login Form</div>
+                <div class="title login">
+{#                    <img src="{% static 'images/login_logo.png' %}" alt="logo" class="logo w-75">#}
+                    <img src="{% static 'images/monkey.gif' %}" alt="logo" class="logo w-50">
+                    <h1 class="display-6 fw-bold text-primary">Secure Server</h1>
+                </div>
+
                 <div class="title signup text-primary">Signup Form</div>
             </div>
             <div class="form-container">
-                <div class="slide-controls">
-                    <input type="radio" name="slide" id="login" checked>
-                    <input type="radio" name="slide" id="signup">
-                    <label for="login" class="slide login">Login</label>
-                    <label for="signup" class="slide signup">Signup</label>
-                    <div class="slider-tab"></div>
-                </div>
-                <div class="form-inner">
-                    <form action="#" class="login">
 
+                <div class="form-inner">
+                    <form action="#" method="POST" class="login">
+                        {% csrf_token %}
                         <div class="field">
-                            <input type="text" placeholder="Username" required>
+                            <input type="text" name="username" placeholder="Username" required>
                         </div>
                         <div class="field">
-                            <input type="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password" required>
                         </div>
                         <div class="pass-link">
                             <a href="#">Forgot password?</a>
@@ -36,7 +37,7 @@
                             <input type="submit" value="Login">
                         </div>
                         <div class="signup-link fs-4">
-                            Not a member? <a href="">Signup now</a>
+                            Not a member? <a href="/register">Signup now</a>
                         </div>
 
                         {% for message in messages %}
@@ -44,31 +45,8 @@
                                 <p id="messages">{{ message }} <i class="fa fa-check-circle" aria-hidden="true"></i></p>
                             </div>
                         {% endfor %}
-
-
                     </form>
-                    <form action="" method="post" class="form">
-                        {% csrf_token %}
-                        <div class="field">
-                            <input id="reg_name" name="reg_name" type="text" placeholder="Name" required>
-                        </div>
-                        <div class="field">
-                            <input id="reg_uname" name="reg_uname" type="text" placeholder="Username" required>
-                        </div>
-                        <div class="field">
-                            <input id="reg_pass" name="reg_pass" type="password" placeholder="Password" required>
-                        </div>
-                        <div class="field">
-                            <input id="reg_confpass" name="reg_confpass" type="password" placeholder="Confirm password"
-                                   required>
-                        </div>
-                        <div class="field btn">
-                            <div class="btn-layer"></div>
-                            <div><input type="submit" value="Signup"></div>
 
-                        </div>
-
-                    </form>
                 </div>
             </div>
         </div>

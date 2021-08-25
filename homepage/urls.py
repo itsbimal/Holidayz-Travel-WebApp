@@ -12,7 +12,9 @@ def testfcn(request):
 
 urlpatterns = [
     path('', views.index_page),
-    path('account/', views.account),
+    path('login/', views.account),
+    path('register/',views.register),
+    path('logout/', views.logout_view),
     path('pricing/',views.pricing_page),
     path('country/', views.country_list),
     path('home/', testfcn)

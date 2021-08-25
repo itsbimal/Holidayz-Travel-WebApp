@@ -311,4 +311,8 @@ section {
     text-decoration: none;
 }
 
+.errorlist{
+    color: red;
+}
+
 
