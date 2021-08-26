@@ -6,20 +6,13 @@ from . import forms, models
 from .forms import SignupForm
 from django.http import HttpResponse
 from django.contrib import messages
-from dashboard.models import Country, Offer, Place
+from admins.models import Country, Offer, Place
 
-
-# Create your views here.
 def index_page(request):
     return render(request, 'homepage/index.html')
 
-
-def pricing_page(request):
-    return render(request, 'homepage/pricing.html')
-
-
 # Accounts
-def account(request):
+def login(request):
     if request.method == 'POST':
         uname = request.POST['username']
         passwd = request.POST['password']
@@ -28,13 +21,13 @@ def account(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            return redirect("/dashboard")
         else:
             messages.info(request, "Invalid Login details! Unable to login")
-            return render(request, 'homepage/account.html')
+            return render(request, 'homepage/login.html')
 
     else:
-        return render(request, 'homepage/account.html')
+        return render(request, 'homepage/login.html')
 
 
 def register(request):
@@ -55,18 +48,13 @@ def register(request):
     return render(request, 'homepage/register.html', context)
 
 
-def logout_view(request):
-    logout(request)
-    return redirect('/')
-
-
-# category
 def country_list(request):
     data = Country.objects.all().order_by('-id')
     context = {
         'data': data
     }
-    return render(request, 'homepage/country.html', context)
+    return render(request, 'dashboard/country.html', context)
 
-def ecard(request):
-    return render(request, 'homepage/ecard.html')
+def pricing_page(request):
+    return render(request, 'dashboard/pricing.html')
+

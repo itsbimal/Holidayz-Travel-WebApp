@@ -1,8 +1,9 @@
-from django.forms import ModelForm
-from .models import Country, Offer, Place
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from . import models
 
-class AddCountry(ModelForm):
+class SignupForm(UserCreationForm):
     class Meta:
-        model = Country
-        fields = '__all__'
-
+        model =User
+        fields = ('first_name','last_name','username','password1','password2')

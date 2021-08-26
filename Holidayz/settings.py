@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'livereload',
     'django.contrib.staticfiles',
-    'homepage',
     'dashboard',
+    'admins',
+    'homepage',
     'bootstrapform',
     'widget_tweaks'
 ]

@@ -1,33 +1,24 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import AddCountry
-from .models import Country
-from django.contrib import messages
+from django.contrib.auth import logout
+from admins.models import Country
 
 
-def user_dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+def index_page(request):
+    return render(request, 'dashboard/index.html')
 
 
-def add_country(request):
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+
+def ecard(request):
+    return render(request, 'dashboard/ecard.html')
+
+def country_list(request):
     data = Country.objects.all().order_by('-id')
-    if request.method == 'POST':
-        form = AddCountry(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.add_message(request, messages.SUCCESS,
-                                 "Congratulations! New country is added successfully in your list")
-            return redirect('/dashboard/addcountry')
     context = {
-        'form': AddCountry,
-        'country_data': data
+        'data': data
     }
+    return render(request, 'dashboard/country.html', context)
 
-    return render(request, 'dashboard/add_country.html', context)
-
-
-def delete_country(request, country_id):
-    country = Country.objects.get(id=country_id)
-    country.delete()
-    messages.add_message(request, messages.SUCCESS, 'Country is deleted successfully')
-    return redirect('/dashboard/addcountry')
