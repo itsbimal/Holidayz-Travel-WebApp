@@ -17,7 +17,8 @@ urlpatterns = [
     path('logout/', views.logout_view),
     path('pricing/',views.pricing_page),
     path('country/', views.country_list),
-    path('home/', testfcn)
+    path('home/', testfcn),
+    path('ecard/', views.ecard)
 ]
 
 if settings.DEBUG:

@@ -4,7 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 class SignupForm(UserCreationForm):
-    full_name = forms.CharField(max_length=50, required=True)
     class Meta:
         model =User
-        fields = ('full_name','username','password1','password2')
+        fields = ('first_name','last_name','username','password1','password2')

@@ -54,9 +54,11 @@ def register(request):
     }
     return render(request, 'homepage/register.html', context)
 
+
 def logout_view(request):
     logout(request)
     return redirect('/')
+
 
 # category
 def country_list(request):
@@ -65,3 +67,6 @@ def country_list(request):
         'data': data
     }
     return render(request, 'homepage/country.html', context)
+
+def ecard(request):
+    return render(request, 'homepage/ecard.html')
