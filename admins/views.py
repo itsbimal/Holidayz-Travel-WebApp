@@ -35,3 +35,8 @@ def delete_country(request, country_id):
 
 def add_place(request):
     return render(request, 'admins/add_place.html')
+
+#Add country according to catogory
+
+
+

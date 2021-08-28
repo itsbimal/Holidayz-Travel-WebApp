@@ -5,5 +5,105 @@
 {% block title %}Add Place{% endblock title %}
 
 {% block main %}
-    Hello Dear!
+    <div class="container-fluid w-75 mb-5" id="add-place">
+        <h3 class="text-dark mb-4 display-5 mt-lg-5 fw-bold">Add Destination</h3>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 display-7">Enter details about destination</p>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <h4 class="text-primary"><u>Enter country details</u></h4>
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label"
+                                                     for="username"><strong>Continent</strong></label>
+
+                                <select class="form-control" id="inputGroupSelect03">
+                                    <option selected>Choose continent here</option>
+                                    <option value="1">Asia</option>
+                                    <option value="2">Europe</option>
+                                    <option value="3">Africa</option>
+                                    <option value="4">South America</option>
+                                    <option value="5">North America</option>
+                                    <option value="6">Australia</option>
+                                    <option value="7">Antarctica</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label w-100" for="country"><strong>Select
+                                Country</strong></label>
+                                <select class="form-control w-100" id="inputGroupSelect03">
+                                    <option selected>Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h4 class="text-danger"><u>Enter destination details</u></h4>
+
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Destination
+                                Name</strong></label><input class="form-control" type="text" id="first_name"
+                                                            placeholder="Jorpati" name="first_name"></div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label w-100" for="country"><strong>Select Type</strong></label>
+                                <select class="form-control w-100" id="inputGroupSelect03">
+                                    <option selected>Choose the region</option>
+                                    <option value="1">Hilly</option>
+                                    <option value="2">Mountain</option>
+                                    <option value="3">Greenary</option>
+                                    <option value="3">Ice Covered</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="form-label w-100" for="floatingTextarea"><strong>Enter the description of the
+                        destination</strong></label>
+                    <textarea class="form-control" placeholder="Leave a description here"
+                              id="floatingTextarea"></textarea>
+
+
+                    <div class="col">
+                        <div class="mt-2"><label class="form-label" for="first_name"><strong>Location
+                            Details</strong></label><input class="form-control" type="text" id="first_name"
+                                                           placeholder="Narayantar, 123 street, Nepal"
+                                                           name="first_name"></div>
+                    </div>
+
+                    <div class="row">
+                        <h4 class="text-success mt-3"><u>Enter days plans planning</u></h4>
+                    </div>
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 1 Plan</strong></label>
+                    <textarea class="form-control" placeholder="Example: Pickup to the airport, moving towards holiday"
+                              id="floatingTextarea"></textarea>
+
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 2 Plan</strong></label>
+                    <textarea class="form-control" placeholder="Example: Visit the amazing destination and jungle safari"
+                              id="floatingTextarea"></textarea>
+
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 3 Plan</strong></label>
+                    <textarea class="form-control" placeholder="Example: Good buy  to all the natura and return back."
+                              id="floatingTextarea"></textarea>
+
+
+
+                    <div class="mt-2">
+                        <button class="btn btn-primary" type="submit">Add destination</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock main %}
