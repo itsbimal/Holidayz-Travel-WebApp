@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.admin_dashboard),
     path('addcountry/', views.add_country),
     path('deletecountry/<int:country_id>', views.delete_country),
+    path('addplace/', views.add_place),
 
 ]

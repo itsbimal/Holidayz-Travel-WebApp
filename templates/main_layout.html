@@ -5,7 +5,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     {# All CDN Links#}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -24,14 +23,13 @@
     <div class="container-fluid">
         <a class="navbar-brand text-light ms-5" id="navbar-brand" href="http://127.0.0.1:8000/">HolidayZ</a>
 
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-around" id="navbarNavAltMarkup">
-            {#              <input class="w-50 bd-r border-white" type="search" placeholder="Enter Keywords" aria-label="Search" id="n-search">#}
+            {#           ,l   <input class="w-50 bd-r border-white" type="search" placeholder="Enter Keywords" aria-label="Search" id="n-search">#}
             <div class="d-flex">
                 <input class="form-control me-1 " type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light w-25 me-0" type="submit">Search</button>
@@ -40,7 +38,7 @@
                 {% if user.is_authenticated %}
 
                     <li class="nav-item rounded">
-                        <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title="Home"
+                        <a href="#" class="nav-link active py-3 border-bottom active-class" aria-current="page" title="Home"
                            data-bs-toggle="tooltip" data-bs-placement="bottom">
                             <i class="fa fa-home fa-2x" aria-hidden="true"></i>
                         </a>
@@ -87,7 +85,7 @@
 
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-5 " aria-current="page" href="/admins">Home</a>
+                        <a class="nav-link text-light fs-5 active-class" aria-current="page" href="/admins">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-light fs-5 " href="#" id="navbarDropdown" role="button"
@@ -98,7 +96,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-5" href="/pricing">Pricing</a>
+                        <a class="nav-link text-light fs-5 {{active_pricing}}" href="/pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light fs-5" href="http://127.0.0.1:8000/">Contact</a>
@@ -110,7 +108,7 @@
                 <div class="nav-item">
                     {% if user.is_authenticated %}
                         <button type="button" onclick="window.location.href='/account'"
-                                class="btn btn-outline-light fs-5 fw-bold">Hello, {{ user.username }}</button>
+                                class="btn btn-outline-light fs-5 fw-bold text-uppercase">Hello, {{ user.username }}</button>
                     {% else %}
 
                         <button type="button" onclick="window.location.href='/login'"
@@ -122,14 +120,13 @@
 
         </div>
     </div>
-
 </nav>
+
 {% block login %} {% endblock login %}
 {% block header %} {% endblock header %}
 {% block featured %} {% endblock featured %}
 {% block flight %} {% endblock flight %}
 {% block trip %} {% endblock trip %}
-
 {% block features %} {% endblock features %}
 {% block price %} {% endblock price %}
 {% block timeline %} {% endblock timeline %}
@@ -137,9 +134,7 @@
 {% include 'footer.html' %}
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 {% block js_file %} {% endblock js_file %}
 

@@ -7,11 +7,15 @@ from .forms import SignupForm
 from django.http import HttpResponse
 from django.contrib import messages
 from admins.models import Country, Offer, Place
+from .auth import unauthenticated_user
+
 
 def index_page(request):
     return render(request, 'homepage/index.html')
 
+
 # Accounts
+@unauthenticated_user
 def login(request):
     if request.method == 'POST':
         uname = request.POST['username']
@@ -30,6 +34,7 @@ def login(request):
         return render(request, 'homepage/login.html')
 
 
+@unauthenticated_user
 def register(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -53,8 +58,11 @@ def country_list(request):
     context = {
         'data': data
     }
-    return render(request, 'dashboard/country.html', context)
+    return render(request, 'homepage/country.html', context)
+
 
 def pricing_page(request):
-    return render(request, 'dashboard/pricing.html')
-
+    context = {
+        'active_pricing': 'active'
+    }
+    return render(request, 'homepage/pricing.html', context)
