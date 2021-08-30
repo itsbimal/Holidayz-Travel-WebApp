@@ -6,6 +6,14 @@ urlpatterns = [
     path('addcountry/', views.add_country),
     path('deletecountry/<int:country_id>', views.delete_country),
     path('addplace/', views.add_place),
-    path('showplace/', views.show_place)
+    path('showplace/', views.show_place),
+    path('showusers/', views.get_users),
+    path('showadmins/', views.get_admins),
+    path('promote_user/<int:user_id>', views.promote_user),
+    path('demote_admin/<int:user_id>', views.demote_admin),
+    path('deactivate_admins/<int:user_id>', views.deactivate_admin),
+    path('deactivate_user/<int:user_id>', views.deactivate_user),
+    path('reactive_admins/<int:user_id>', views.reactive_admin),
+    path('reactive_user/<int:user_id>', views.reactive_user),
 
 ]

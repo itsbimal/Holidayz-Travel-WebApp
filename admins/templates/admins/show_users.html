@@ -6,17 +6,18 @@
 
 {% block main %}
     <div id="wrapper">
-        <div class="container-fluid mb-4">
-            <h3 class="text-dark mb-4 display-6 mt-lg-2">Showing all your destination</h3>
+        <div class="container-fluid w-75 mb-4">
+            <h3 class="text-dark mb-4 display-5 mt-lg-2">Showing all travellers details</h3>
             <div class="card shadow">
                 <div class="card-header py-3 d-flex">
-                    <p class="text-primary m-0 fw-bold">Destination Information</p>
-                    <a href="/admins/addplace" class="btn btn-primary ms-auto">Add new destination</a>
+                    <p class="text-primary m-2 fw-bold ">All Travellers Information</p>
+                    <a href="/admins/addplace" class="btn btn-primary ms-auto">Add new travellers</a>
                 </div>
                 {% for m in messages %}
                     <div class="alert alert-success alert-dismissible fade show justify-content-between" role="alert">
-                        <strong>Great job Admin, </strong> {{ m.message }}
-                        <button type="button" class="close btn-success" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Great step Admin, </strong> {{ m.message }}
+                        <button type="button" class="close btn-success" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     </div>
                 {% endfor %}
                 <div class="card-body">
@@ -43,47 +44,44 @@
                         <table class="table my-0" id="dataTable">
                             <thead>
                             <tr>
-                                <th>Destination Name</th>
-                                <th>Country</th>
-                                <th>Description</th>
-                                <th>Location</th>
-                                <th>Day 1</th>
-                                <th>Day 2</th>
-                                <th>Day 3</th>
-                                <th>Image</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email Address</th>
+                                <th>Username</th>
+                                <th>Active Status</th>
+                                <th>Admin Status</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for i in all_place %}
+                            {% for i in users %}
                                 <tr>
-                                    <td>{{ i.dest_name }}</td>
-                                    <td>{{ i.country }}</td>
-                                    <td>{{ i.dest_desc }}</td>
-                                    <td>{{ i.dest_location }}</td>
-                                    <td>{{ i.day_one }}</td>
-                                    <td>{{ i.day_two }}</td>
-                                    <td>{{ i.day_three }}</td>
-                                    <td><img src="/{{ i.dest_image }}" alt="Place Image" width="15%"></td>
+                                    <td>{{ i.first_name }}</td>
+                                    <td>{{ i.last_name }}</td>
+                                    <td>{{ i.email }}</td>
+                                    <td>{{ i.username }}</td>
+                                    <td>{{ i.is_active }}</td>
+                                    <td>{{ i.is_staff }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm"
-                                           href="/products/updatestudent/{{ student.id }}">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="/products/deletestudent/{{ student.id }}"
-                                           onclick="return confirm('Are you sure bro?')">Delete</a>
+                                        <a class="btn btn-primary btn-sm" href="/admins/promote_user/{{ i.id }}"
+                                           onclick="return confirm('Are you sure you want to promote?')">Promote to
+                                            admin</a>
+                                        <a class="btn btn-danger btn-sm" href="/admins/deactivate_user/{{ i.id }}"
+                                           onclick="return confirm('Are you sure bro?')">Deactivate</a>
+                                        <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure want to Reactive?')" href="/admins/reactive_user/{{ i.id }}">Reactive</a>
+
                                     </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Destination Name</th>
-                                <th>Country</th>
-                                <th>Description</th>
-                                <th>Location</th>
-                                <th>Day 1</th>
-                                <th>Day 2</th>
-                                <th>Day 3</th>
-                                <th>Image</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email Address</th>
+                                <th>Username</th>
+                                <th>Active Status</th>
+                                <th>Admin Status</th>
                                 <th>Actions</th>
                             </tr>
                             </tfoot>
