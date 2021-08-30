@@ -6,7 +6,7 @@ from . import forms, models
 from .forms import SignupForm
 from django.http import HttpResponse
 from django.contrib import messages
-from admins.models import Country, Offer, Place
+from admins.models import Country
 from .auth import unauthenticated_user
 
 

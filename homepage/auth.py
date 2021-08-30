@@ -7,13 +7,17 @@ def unauthenticated_user(view_function):
             return redirect('/dashboard')
         else:
             return view_function(request, *args, **kwargs)
-
     return wrapper_function
 
 
 def admin_only(view_function):
     def wrapper_function(request, *args, **kwargs):
-        pass
+        if request.user.is_staff:
+            return redirect('/admins')
+        else:
+            return view_function(request, *args, **kwargs)
+
+    return wrapper_function
 
 
 def user_only(view_function):
@@ -22,3 +26,4 @@ def user_only(view_function):
             return redirect('/admins')
         else:
             return view_function(request, *args, **kwargs)
+    return wrapper_function

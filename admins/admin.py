@@ -7,9 +7,9 @@ admin.site.register(Country)
 admin.site.register(Offer)
 
 
-class PlaceAdmin(admin.ModelAdmin):
-    list_display = ('offers', 'price', 'status')
-    list_editable = ('status',)
+# class PlaceAdmin(admin.ModelAdmin):
+#     list_display = ('Name', 'Description')
+#     # list_editable = ('status',)
 
 
-admin.site.register(Place, PlaceAdmin)
+admin.site.register(Place)

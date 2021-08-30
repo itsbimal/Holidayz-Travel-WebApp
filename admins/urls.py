@@ -6,5 +6,6 @@ urlpatterns = [
     path('addcountry/', views.add_country),
     path('deletecountry/<int:country_id>', views.delete_country),
     path('addplace/', views.add_place),
+    path('showplace/', views.show_place)
 
 ]

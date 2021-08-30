@@ -1,0 +1,108 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Show places{% endblock title %}
+
+{% block main %}
+    <div id="wrapper">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4 display-6 mt-lg-2">Showing all your destination</h3>
+            <div class="card shadow">
+                <div class="card-header py-3 d-flex">
+                    <p class="text-primary m-0 fw-bold">Destination Information</p>
+                    <a href="/admins/addplace" class="btn btn-primary ms-auto">Add new destination</a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 text-nowrap">
+                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label
+                                    class="form-label">Show&nbsp;<select
+                                    class="d-inline-block form-select form-select-sm">
+                                <option value="10" selected="">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>&nbsp;</label></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
+                                    class="form-label"><input type="search" class="form-control form-control-sm"
+                                                              aria-controls="dataTable" placeholder="Search"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                         aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>Destination Name</th>
+                                <th>Country</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Day 1</th>
+                                <th>Day 2</th>
+                                <th>Day 3</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in all_place %}
+                                <tr>
+                                    <td>{{ i.dest_name }}</td>
+                                    <td>{{ i.country }}</td>
+                                    <td>{{ i.dest_desc }}</td>
+                                    <td>{{ i.dest_location }}</td>
+                                    <td>{{ i.day_one }}</td>
+                                    <td>{{ i.day_two }}</td>
+                                    <td>{{ i.day_three }}</td>
+                                    <td><img src="/{{ i.dest_image }}" alt="Place Image" width="15%"> </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="/products/updatestudent/{{ student.id }}">Edit</a>
+                                        <a class="btn btn-danger btn-sm" href="/products/deletestudent/{{ student.id }}" onclick="return confirm('Are you sure bro?')">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>Destination Name</th>
+                                <th>Country</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Day 1</th>
+                                <th>Day 2</th>
+                                <th>Day 3</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 align-self-center">
+                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to
+                                10 of 27</p>
+                        </div>
+                        <div class="col-md-6">
+                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                <ul class="pagination">
+                                    <li class="page-item disabled"><a class="page-link" href="#"
+                                                                      aria-label="Previous"><span
+                                            aria-hidden="true">«</span></a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                                            aria-hidden="true">»</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

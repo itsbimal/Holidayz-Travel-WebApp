@@ -10,18 +10,23 @@ class Country(models.Model):
     def __str__(self):
         return self.Name
 
+
 # Offers included
 class Offer(models.Model):
-    duration = models.CharField(max_length=100)
+    durations = models.CharField(max_length=100)
     accommodation = models.CharField(max_length=100)
     extra = models.TextField()
 
 
 # Places inside country
 class Place(models.Model):
-    title = models.CharField(max_length=120)
-    image = models.ImageField(upload_to='static/uploads/place')
-    desc = models.TextField()
-    offers = models.ForeignKey(Offer, on_delete=models.CASCADE)
-    price = models.PositiveIntegerField()
-    status = models.BooleanField(default=True)
+    dest_name = models.CharField(max_length=50)
+    dest_type = models.CharField(max_length=50)
+    dest_desc = models.TextField()
+    dest_location = models.CharField(max_length=120)
+    dest_image = models.ImageField(upload_to="static/uploads/destination")
+    day_one = models.TextField()
+    day_two = models.TextField()
+    day_three = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True, null=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
