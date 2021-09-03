@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 from homepage.auth import admin_only, user_only
 
 
-# @login_required
 def admin_dashboard(request):
     return render(request, 'admins/admins_home.html')
 
@@ -45,21 +44,22 @@ def add_place(request):
     }
     if request.method == 'POST':
         # data = request.POST
-        country = request.POST.get('country_asp')
-        dest_name = request.POST.get('asp_name')
-        dest_type = request.POST.get('asp_type')
-        dest_desc = request.POST.get('asp_desc')
-        dest_location = request.POST.get('asp_location')
-        dest_image = request.FILES.get('asp_image')
-        day_one = request.POST.get('day_one')
-        day_two = request.POST.get('day_two')
-        day_three = request.POST.get('day_three')
+        country = request.POST('country_asp')
+        dest_name = request.POST('asp_name')
+        dest_type = request.POST('asp_type')
+        dest_desc = request.POST('asp_desc')
+        dest_location = request.POST('asp_location')
+        dest_img = request.FILES('asp_image')
+        day_one = request.POST('day_one')
+        day_two = request.POST('day_two')
+        day_three = request.POST('day_three')
+
         place = Place(country_id=country,
                       dest_name=dest_name,
                       dest_type=dest_type,
                       dest_desc=dest_desc,
                       dest_location=dest_location,
-                      dest_image=dest_image,
+                      dest_image=dest_img,
                       day_one=day_one,
                       day_two=day_two,
                       day_three=day_three
@@ -67,7 +67,7 @@ def add_place(request):
         place.save()
 
         if place:
-            return HttpResponse("Successful")
+            return redirect('/admins/showplace')
         else:
             return HttpResponse('Unsuccessful')
 

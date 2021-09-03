@@ -12,15 +12,15 @@
                 <h3 class="debit">HolidayZ Travel Card</h3>
                 <h3 class="bank">Premium</h3>
                 <img class="chip" src="{% static 'images/chip.png' %}" alt="chip">
-                <h3 class="number">1224 5678 9010 2525</h3>
+                <h3 class="number">{{ request.user.profile.ecard_no }}</h3>
                 <h5 class="valid">Valid Until:<span>10/28</span></h5>
-                <h5 class="ecard-holder">Bimal Shrestha</h5>
+                <h5 class="ecard-holder">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
             </div>
             <div class="face back">
                 <div class="blackbar"></div>
                 <div class="cvvtext">
                     <div class="white-bar"></div>
-                    <div class="cvv">455</div>
+                    <div class="cvv">{{ request.user.profile.ecard_cvv }}</div>
                 </div>
                 <p class="text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis ex nec nulla posuere sollicitudin. Proin nec orci at est pellentesque malesuada eu a neque. Maecenas quis porttitor odio. Praesent faucibus dui nisl, ac luctus mauris pulvinar in.

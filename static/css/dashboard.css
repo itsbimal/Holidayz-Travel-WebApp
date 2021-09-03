@@ -1,8 +1,8 @@
 .active-class {
-    background-color: gray;
+    /*background-color: #fff;*/
     color: #fff;
-    border: 1px solid #fff;
-    border-radius: 10px;
+    border-bottom: 1px solid white;
+    /*border-radius: 10px;*/
 }
 
 #navbar-brand {
@@ -15,7 +15,7 @@
     top: 0;
     width: 100%;
     backdrop-filter: blur(5rem);
-    background-color: rgba(192, 186, 186, 0.5);
+    background-color: rgba(35, 37, 36, 0.5);
 }
 
 .navbar-nav li {
@@ -24,9 +24,11 @@
 }
 
 .navbar-nav li:hover {
-    border: 1px solid #fff;
-    border-radius: 10px;
-    transition: .3s;
+    border-bottom: 1px solid white;
+    /* border-radius: 10px; */
+    /* background-color: green; */
+    /* color: #ffec61; */
+    transition: .3s ease;
 }
 
 .header {
@@ -66,25 +68,59 @@
     flex-wrap: wrap;
 }
 
-.my-card:hover {
-    cursor: pointer;
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 50px #ccc;
-    border-width: 1px;
-    border-style: solid;
-    -webkit-border-image: -webkit-linear-gradient(top, #bea6cf 0%, #7ab1df 100%);
-    border-image: linear-gradient(to bottom, red 0%, blue 100%);
-    border-image-slice: 0;
-    transition: ease-in-out .4s;
-    transform: scale(1.0)
-}
 
-@media (max-width: 982px) {
-    #n-search {
-        width: 100%;
-        align-items: center;
-    }
-}
+/*.my-card:hover {*/
+
+
+/*    cursor: pointer;*/
+
+
+/*    transition: .5s ease-in-out;*/
+
+
+/*    box-shadow: 0 0 50px #ccc;*/
+
+
+/*    border-width: 1px;*/
+
+
+/*    border-style: solid;*/
+
+
+/*    -webkit-border-image: -webkit-linear-gradient(top, #bea6cf 0%, #7ab1df 100%);*/
+
+
+/*    border-image: linear-gradient(to bottom, red 0%, blue 100%);*/
+
+
+/*    border-image-slice: 0;*/
+
+
+/*    transition: ease-in-out .4s;*/
+
+
+/*    transform: scale(1.0)*/
+
+
+/*}*/
+
+
+/*@media (max-width: 982px) {*/
+
+
+/*    #n-search {*/
+
+
+/*        width: 100%;*/
+
+
+/*        align-items: center;*/
+
+
+/*    }*/
+
+
+/*}*/
 
 
 /* Featured country card */
@@ -224,7 +260,7 @@ section {
     padding: 40px;
 }
 
-.card {
+#card {
     position: relative;
     /* max-width: 400px; */
     height: auto;
@@ -233,22 +269,22 @@ section {
     transition: .5s;
 }
 
-.card:hover {
+#card:hover {
     transform: scale(1.1);
 }
 
-.card,
-.card .title .fa {
+#card,
+#card .title .fa {
     background: linear-gradient(-45deg, #f403d1, #64b5f6);
 }
 
-.col-sm-4:nth-child(2) .card,
+.col-sm-4:nth-child(2) #card,
 .col-sm-4:nth-child(2) .card .title .fa {
     background: linear-gradient(-45deg, #ffec61, #f321d7);
 }
 
-.col-sm-4:nth-child(3) .card,
-.col-sm-4:nth-child(3) .card .title .fa {
+.col-sm-4:nth-child(3) #card,
+.col-sm-4:nth-child(3) #card .title .fa {
     background: linear-gradient(-45deg, #24ff72, #9a4eff);
 }
 
@@ -299,7 +335,7 @@ section {
     font-size: 16px;
 }
 
-.card a {
+#card a {
     position: relative;
     z-index: 2;
     background: #fff;
@@ -317,10 +353,24 @@ section {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
 }
 
-.card a:hover {
+#card a:hover {
     text-decoration: none;
 }
 
 .errorlist {
     color: red;
 }
+
+#profile-s {
+    width: 70%;
+    margin-top: 6%;
+}
+
+#card-bdy {
+    border-radius: 30px;
+}
+#place-margin{
+    margin-top: 50px;
+}
+
+/**/

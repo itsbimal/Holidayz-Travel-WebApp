@@ -11,7 +11,10 @@ urlpatterns = [
     path('', views.index_page),
     path('logout/', views.logout_view),
     path('ecard/', views.ecard),
-    path('country/',views.country_list)
+    path('country/',views.country_list),
+    path('profile/', views.profile),
+    path('places/', views.places),
+    path('details/', views.place_details)
 ]
 
 if settings.DEBUG:

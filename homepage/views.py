@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from admins.models import Country
 from .auth import unauthenticated_user
+from dashboard.models import Profile
 
 
 def index_page(request):
@@ -24,8 +25,14 @@ def login(request):
         user = auth.authenticate(username=uname, password=passwd)
 
         if user is not None:
-            auth.login(request, user)
-            return redirect("/dashboard")
+            if not user.is_staff:
+                auth.login(request, user)
+                return redirect("/dashboard")
+
+            elif user.is_staff:
+                auth.login(request, user)
+                return redirect('/admins')
+
         else:
             messages.info(request, "Invalid Login details! Unable to login")
             return render(request, 'homepage/login.html')
@@ -39,7 +46,10 @@ def register(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            Profile.objects.create(user=user, username=user.username,
+                                   email=user.email)
+
             messages.add_message(request, messages.SUCCESS, "User has been created successfully!")
             return redirect('/login')
         else:

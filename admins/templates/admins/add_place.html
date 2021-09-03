@@ -7,7 +7,7 @@
 {% block main %}
     <div class="container-fluid w-100 mb-5" id="add-place">
         <h3 class="text-dark mb-4 display-6 mt-lg-2 ">Add New Destination</h3>
-        <div class="card shadow mb-3">
+        <div class="card mb-3">
             <div class="card-header py-3 d-flex">
                 <p class="text-primary m-0 display-7">Enter details about destination</p>
                 <a href="/admins/showplace" class="btn btn-primary ms-auto">Show all destinations</a>
@@ -33,7 +33,14 @@
 
                         <div class="col">
                             <div class="">
-                                <label class="form-label w-100" for="country"><strong>Can't find country?</strong></label>
+                                <label class="form-label w-100" for="country"><strong>Set price</strong></label>
+                                <input class="form-control" type="number" placeholder="$1000" name="asp_name">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <label class="form-label w-100" for="country"><strong>Can't find
+                                    country?</strong></label>
                                 <a href="/admins/addcountry" class="btn btn-primary ms-auto w-100">Add new country</a>
                             </div>
                         </div>
@@ -43,17 +50,18 @@
                         <h4 class="text-danger"><u>Enter destination details</u></h4>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label mt-3" for="first_name"><strong>Destination Name</strong></label>
+                                <label class="form-label mt-3" for="first_name"><strong>Destination
+                                    Name</strong></label>
                                 <input class="form-control" type="text" placeholder="Jorpati" name="asp_name"></div>
                         </div>
                         <div class="col">
                             <div class="mb-3"><label class="form-label w-100"></label> <strong>Select Type</strong>
                                 <select name="asp_type" class="form-control w-100">
                                     <option selected>Choose the region</option>
-                                    <option value="1">Hilly</option>
-                                    <option value="2">Mountain</option>
-                                    <option value="3">Greenary</option>
-                                    <option value="3">Ice Covered</option>
+                                    <option value="Hilly">Hilly</option>
+                                    <option value="Mountain">Mountain</option>
+                                    <option value="Greenary">Greenary</option>
+                                    <option value="Ice Covered">Ice Covered</option>
                                 </select>
                                 {#                                <input type="text" name="asp_type">#}
                             </div>

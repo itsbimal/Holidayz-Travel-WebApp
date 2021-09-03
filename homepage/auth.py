@@ -23,7 +23,8 @@ def admin_only(view_function):
 def user_only(view_function):
     def wrapper_function(request, *args, **kwargs):
         if request.user.is_staff:
-            return redirect('/admins')
-        else:
             return view_function(request, *args, **kwargs)
+        else:
+            return redirect('/admins')
+
     return wrapper_function

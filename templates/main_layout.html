@@ -45,7 +45,7 @@
                     </li>
 
                     <li class="ms-4">
-                        <a href="/dashboard/country" class="nav-link py-3" title="Explore Places" data-bs-toggle="tooltip"
+                        <a href="/country" class="nav-link py-3" title="Explore Places" data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-compass fa-2x" aria-hidden="true"></i>
                         </a>
@@ -60,7 +60,7 @@
                     </li>
 
                     <li class="ms-4">
-                        <a href="addcountry" class="nav-link py-3" title="My Requests"
+                        <a href="/dashboard/places" class="nav-link py-3" title="My Requests"
                            data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
             <ul class="navbar-nav">
                 <div class="nav-item">
                     {% if user.is_authenticated %}
-                        <button type="button" onclick="window.location.href='/account'"
+                        <button type="button" onclick="window.location.href='/dashboard/profile'"
                                 class="btn btn-outline-light fs-5 fw-bold text-uppercase">Hello, {{ user.username }}</button>
                     {% else %}
 

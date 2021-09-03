@@ -13,7 +13,7 @@
                     {% for country in data %}
                         <div class="col-md-4" onclick="location.href='/account'">
                             <div class="country-card"><img src="/{{ country.Image }}" class="img img-responsive">
-                                <div class="country-name">{{ country.Name }}</div>
+                                <div class="country-name">{{ country.Name }} <span class="badge bg-danger">{{ country.Number }} Places</span></div>
                                 <div class="desc">{{ country.Description }}</div>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ from django.db import models
 class Country(models.Model):
     Name = models.CharField(max_length=120)
     Description = models.CharField(max_length=60)
+    Number = models.IntegerField()
     Image = models.ImageField(upload_to="static/uploads/country")
 
     def __str__(self):
@@ -22,6 +23,7 @@ class Offer(models.Model):
 class Place(models.Model):
     dest_name = models.CharField(max_length=50)
     dest_type = models.CharField(max_length=50)
+    dest_price = models.IntegerField(max_length=10)
     dest_desc = models.TextField()
     dest_location = models.CharField(max_length=120)
     dest_image = models.ImageField(upload_to="static/uploads/destination")
