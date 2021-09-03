@@ -5,17 +5,18 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
     path('', views.index_page),
     path('logout/', views.logout_view),
     path('ecard/', views.ecard),
-    path('country/',views.country_list),
+    path('country/', views.country_list),
     path('profile/', views.profile),
-    path('places/', views.places),
-    path('details/', views.place_details)
+    path('showplaces/', views.show_places),
+    path('details/<str:name>', views.place_details, name='details'),
+    path('places/<int:c_id>', views.destination_list, name='destination_list'),
+    path('watchlist/', views.watchlist, name='watchlist'),
+    path('showwatchlist/', views.show_watchlist, name='showwatchlist'),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

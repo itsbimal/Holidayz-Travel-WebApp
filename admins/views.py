@@ -44,22 +44,23 @@ def add_place(request):
     }
     if request.method == 'POST':
         # data = request.POST
-        country = request.POST('country_asp')
-        dest_name = request.POST('asp_name')
-        dest_type = request.POST('asp_type')
-        dest_desc = request.POST('asp_desc')
-        dest_location = request.POST('asp_location')
-        dest_img = request.FILES('asp_image')
-        day_one = request.POST('day_one')
-        day_two = request.POST('day_two')
-        day_three = request.POST('day_three')
-
+        country = request.POST.get('country_asp')
+        dest_name = request.POST.get('asp_name')
+        dest_price = request.POST.get('asp_price')
+        dest_type = request.POST.get('asp_type')
+        dest_desc = request.POST.get('asp_desc')
+        dest_location = request.POST.get('asp_location')
+        dest_image = request.FILES.get('asp_image')
+        day_one = request.POST.get('day_one')
+        day_two = request.POST.get('day_two')
+        day_three = request.POST.get('day_three')
         place = Place(country_id=country,
                       dest_name=dest_name,
+                      dest_price=dest_price,
                       dest_type=dest_type,
                       dest_desc=dest_desc,
                       dest_location=dest_location,
-                      dest_image=dest_img,
+                      dest_image=dest_image,
                       day_one=day_one,
                       day_two=day_two,
                       day_three=day_three
@@ -72,7 +73,6 @@ def add_place(request):
             return HttpResponse('Unsuccessful')
 
     return render(request, 'admins/add_place.html', context)
-
 
 def show_place(request):
     data = Place.objects.all().order_by('-id')

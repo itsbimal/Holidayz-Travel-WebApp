@@ -1,0 +1,24 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block title %}
+    Watchlist
+{% endblock title %}
+
+{% block header %}
+    <div class="container" style="margin-top: 100px">
+        <h3 class="mt-4 display-2">Your Watchlists</h3>
+        {% for i in watchlist %}
+        <div class="card mb-3">
+            <img src="{{i.place.dest_image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.place.dest_name }}</h5>
+                <p class="card-text">{{ i.place.dest_desc }}.</p>
+                <button type="button" class="btn btn-primary">Visit once again</button>
+                <button type="button" class="btn btn-danger">Remove from watchlist</button>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

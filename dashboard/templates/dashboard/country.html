@@ -11,7 +11,7 @@
             <div class="row">
                 {% if data %}
                     {% for country in data %}
-                        <div class="col-md-4" onclick="location.href='/account'">
+                        <div class="col-md-4" onclick="location.href='/dashboard/places/{{ country.id }}'">
                             <div class="country-card"><img src="/{{ country.Image }}" class="img img-responsive">
                                 <div class="country-name">{{ country.Name }}</div>
                                 <div class="desc">{{ country.Description }}</div>

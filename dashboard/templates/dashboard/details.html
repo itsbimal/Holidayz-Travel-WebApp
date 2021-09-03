@@ -8,21 +8,16 @@
 
         </video>
         <div class="text-white" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-            <h5 class="fw-bold mb-4" style="font-size: 120px; ">Welcome to Nepal! </h5>
-            <h2 class="display-2 fw-bold" style=""><i class="fa fa-map-marker" aria-hidden="true"></i> Jorpati,
-                Kathmandu</h2>
+            <h5 class="fw-bold mb-4" style="font-size: 120px; ">Welcome to {{details.country}} </h5>
+            <h2 class="display-2 fw-bold" style=""><i class="fa fa-map-marker" aria-hidden="true"></i> {{ details.dest_name }}</h2>
         </div>
     </header>
 
-    <div class="container text-secondary d-flex">
-        <div>
-            <p class="display-6 fw-bold" id="place-margin" style="margin-top: 100px">Tour details</p>
-            <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aliquid aut corporis
-                debitis
-                dignissimos earum esse eveniet molestiae nobis, perferendis quae quaerat, quo quos, rem repellat velit?
-                Cum,
-                sapiente.</p>
-            <p class="display-6 fw-bold text-primary" style="margin-top: 60px">Types of place : Hilly</p>
+    <div class="container text-secondary d-flex"  style="margin-top: 100px">
+        <div class="shadow p-5">
+            <p class="display-6 fw-bold">Tour details</p>
+            <p class="pt-3">{{ details.dest_desc }}</p>
+            <p class="display-6 fw-bold" style="margin-top: 60px">Types of place : {{ details.dest_type }}</p>
 
             <div class="container" style="margin: 0px; padding: 0px">
                 <p class="display-6 fw-bold" style="margin-top: 60px; margin-bottom: 20px">Package benefit</p>
@@ -52,36 +47,15 @@
                 <p class="display-6 fw-bold" style="margin-top: 100px">Days plans</p>
                 <div>
                     <h5>Day - One</h5>
-                    <p class="" style="margin-bottom: 30px">Lorem ipsum fdolor sit amet, consectetur adipisicing elit. A
-                        aliquam aliquid aut
-                        corporis
-                        debitis
-                        dignissimos earum esse eveniet molestiae nobis, perferendis quae quaerat, quo quos, rem repellat
-                        velit?
-                        Cum,
-                        sapiente.</p>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_one }}</p>
                 </div>
                 <div>
                     <h5>Day - Two</h5>
-                    <p class="" style="margin-bottom: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                        aliquam aliquid aut
-                        corporis
-                        debitis
-                        dignissimos earum esse eveniet molestiae nobis, perferendis quae quaerat, quo quos, rem repellat
-                        velit?
-                        Cum,
-                        sapiente.</p>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_two }}</p>
                 </div>
                 <div>
                     <h5>Day - Three</h5>
-                    <p class="" style="margin-bottom: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                        aliquam aliquid aut
-                        corporis
-                        debitis
-                        dignissimos earum esse eveniet molestiae nobis, perferendis quae quaerat, quo quos, rem repellat
-                        velit?
-                        Cum,
-                        sapiente.</p>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_three }}</p>
                 </div>
                 <button class="btn btn-primary w-100">Lets book</button>
             </div>
@@ -149,12 +123,15 @@
         </div>
 
 
-        <div class="map-iframe shadow"
-             style="border-radius: 30px; overflow: hidden; height: fit-content; margin-top: 100px">
+        <div class="map-iframe shadow" style="border-radius: 0px 30px 30px 0px; overflow: hidden; height: fit-content; >
             <h3 class="text-center">Location:</h3>
-            <iframe width="1000px" height="450px"
-                    src="https://maps.google.com/maps?width=700&amp;height=600&amp;hl=en&amp;q=New%20York+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"></iframe>
+            <iframe width="1000px" height="450px" src="https://maps.google.com/maps?width=700&amp;height=600&amp;hl=en&amp;q=New%20York+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"></iframe>
+
+            <form action="/dashboard/watchlist"><input type="hidden" name="place_id" value="{{ details.id }}" id="place_id">
+                <button type="submit" class="btn btn-danger w-100">Add to watch list</button>
+            </form>
         </div>
+    </div>
 
     </div>
 

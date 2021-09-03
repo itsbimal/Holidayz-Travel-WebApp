@@ -6,7 +6,7 @@ from . import forms, models
 from .forms import SignupForm
 from django.http import HttpResponse
 from django.contrib import messages
-from admins.models import Country
+from admins.models import Country, Place
 from .auth import unauthenticated_user
 from dashboard.models import Profile
 
@@ -76,3 +76,6 @@ def pricing_page(request):
         'active_pricing': 'active'
     }
     return render(request, 'homepage/pricing.html', context)
+
+# ----------------------------
+
