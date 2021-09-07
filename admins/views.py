@@ -34,7 +34,7 @@ def delete_country(request, country_id):
     country = Country.objects.get(id=country_id)
     country.delete()
     messages.add_message(request, messages.SUCCESS, 'Country is deleted successfully')
-    return redirect('/admins/addcountry')
+    return redirect('/dashboard/booking')
 
 
 def add_place(request):

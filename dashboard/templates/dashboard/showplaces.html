@@ -5,11 +5,11 @@
     <section id="featured-box">
         <div class="container my-5">
             <div class="intro">
-                <h1 class="display-2 fw-semibold py-4 ">Suggested places for you, {{ country.Name }}</h1>
+                <h1 class="display-2 fw-semibold py-4 ">Suggested places for you</h1>
             </div>
             <div class="row row-cols-1 row-cols-md-2 g-4">
-                {% if country %}
-                    {% for place in country.place_set.all %}
+                {% if places %}
+                    {% for place in places %}
                         <div class="col">
                             <div class="card mb-3" style="max-width: 740px;">
                                 <div class="row g-0">
@@ -41,7 +41,7 @@
 
                                             </div>
                                             <div class="d-flex justify-content-between">
-                                                <a href="/dashboard/details/{{ place.dest_name }}">show more info</a>S
+                                                <a href="/dashboard/details/{{ place.dest_name }}">show more info</a>
                                                 <h5 class="mt-1"><span class="fa fa-map-marker text-success"></span> {{ place.dest_location }}</h5>
                                             </div>
                                         </div>

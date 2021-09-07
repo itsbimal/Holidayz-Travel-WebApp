@@ -6,6 +6,7 @@ class Country(models.Model):
     Name = models.CharField(max_length=120)
     Description = models.CharField(max_length=60)
     Number = models.IntegerField()
+    video_url = models.URLField()
     Image = models.ImageField(upload_to="static/uploads/country")
 
     def __str__(self):
@@ -14,9 +15,13 @@ class Country(models.Model):
 
 # Offers included
 class Offer(models.Model):
-    durations = models.CharField(max_length=100)
+    offer_name = models.CharField(max_length=50)
+    adventure = models.CharField(max_length=100)
     accommodation = models.CharField(max_length=100)
     extra = models.TextField()
+
+    def __str__(self):
+        return self.offer_name
 
 
 # Places inside country

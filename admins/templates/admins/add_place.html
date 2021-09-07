@@ -13,13 +13,12 @@
                 <a href="/admins/showplace" class="btn btn-primary ms-auto">Show all destinations</a>
             </div>
             <div class="card-body">
-                <form class="form" action="" method="POST">
+                <form class="form" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <h4 class="text-primary"><u>Enter country details</u></h4>
                         <div class="col">
-                            <div class="mb-3"><label class="form-label"
-                                                     for="username"><strong>Select Country (Compulsory)</strong></label>
+                            <div class="mb-3"><label class="form-label" for="username"><strong>Select Country (Compulsory)</strong></label>
                                 <select class="form-control w-100" id="inputGroupSelect03" name="country_asp">
                                     <option selected>Choose the country from the list below
                                     </option>

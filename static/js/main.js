@@ -29,3 +29,6 @@ $(document).ready(() => {
         autoplayHoverPause: true
     })
 })
+
+// Data Picker Initialization
+$('.datepicker').pickadate();
