@@ -23,7 +23,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=10)
-    profile_pic = models.FileField(upload_to='static/uploads/profile', default='static/images/profile.gif')
+    profile_pic = models.FileField(upload_to='static/uploads/profile', default='static/images/prof.png')
     ecard_no = models.CharField(max_length=16, default=random_ecard)
     ecard_cvv = models.CharField(max_length=3, default=random_cvv)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -55,7 +55,7 @@ class Booking(models.Model):
 
     place = models.ForeignKey(Place, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    # offer = models.ForeignKey(Offer,null=True, on_delete=models.CASCADE)
+    offer = models.ForeignKey(Offer,null=True, on_delete=models.CASCADE)
     total_person = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(15)])
     total_price = models.IntegerField(null=True)
     status = models.CharField(max_length=200, choices=STATUS, null=True)

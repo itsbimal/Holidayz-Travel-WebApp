@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock title %}
+
+
+{% block main %}
+    <h3 class="text-dark mb-4 display-6 mt-lg-5">HolidayZ - All issued Travel Card</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+        {% for i in idcard %}
+        <div class="col">
+            <div class="card shadow" style="border: none">
+
+                <img src="{% static 'images/card_logi.png' %}" class="card-img-top" alt="...">
+                <h1 class="text-center text-primary">Travel Card</h1>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Owner: {{ i.first_name}} {{ i.last_name }}</h5>
+                    <h5 class="card-title">Card No.: {{ i.profile.ecard_no}}</h5>
+
+                                        <h5 class="card-title">Card cvv: {{ i.profile.ecard_cvv }}</h5>
+
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

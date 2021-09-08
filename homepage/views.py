@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, logout
 from . import forms, models
-from .forms import SignupForm
+from .forms import SignupForm, ContactForms
 from django.http import HttpResponse
 from django.contrib import messages
 from admins.models import Country, Place
@@ -12,7 +12,10 @@ from dashboard.models import Profile
 
 
 def index_page(request):
-    return render(request, 'homepage/index.html')
+    context = {
+        'activate_hhomepage': 'active border-bottom active-class',
+    }
+    return render(request, 'homepage/index.html', context)
 
 
 # Accounts
@@ -66,16 +69,32 @@ def register(request):
 def country_list(request):
     data = Country.objects.all().order_by('-id')
     context = {
-        'data': data
+        'data': data,
+        'activate_hcountry': 'active border-bottom active-class'
     }
     return render(request, 'homepage/country.html', context)
 
 
 def pricing_page(request):
     context = {
-        'active_pricing': 'active'
+        'active_pricing': 'active',
+        'activate_hpricing': 'active border-bottom active-class'
     }
     return render(request, 'homepage/pricing.html', context)
 
-# ----------------------------
 
+# ----------------------------
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForms(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Congratulations! Contact form has been submitted")
+            return redirect('/contact')
+        else:
+            messages.add_message(request, messages.ERROR, "Error")
+            return redirect('/contact')
+    context = {
+        'form': ContactForms
+    }
+    return render(request, 'homepage/contact.html', context)

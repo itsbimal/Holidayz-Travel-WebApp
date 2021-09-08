@@ -373,4 +373,20 @@ section {
     margin-top: 50px;
 }
 
-/**/
+#areyousure{
+    background-image: url(../images/areyousure.jpg);
+    background-size: cover;
+    height: 98vh;
+    display: grid;
+    place-items: center;
+}
+
+.h1text {
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#myForm input{
+    width: 100%;
+}

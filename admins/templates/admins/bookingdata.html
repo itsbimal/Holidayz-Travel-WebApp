@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock title %}
+
+
+{% block main %}
+    <h3 class="text-dark mb-4 display-6 mt-lg-5">Showing All Booked Data</h3>
+    {% for i in booking %}
+        <div class="card shadow outline-none" style="margin-top: 20px; border: none">
+            <div class="d-flex justify-content-between card-header">
+                <h5 class="text-primary">{{ i.user.first_name }} {{ i.user.last_name }} ➦ Booked a holiday in
+                    ✈ {{ i.place.dest_name }}, {{ i.place.country }}</h5>
+                <h5>#BID{{ i.id }} <span class="badge bg-primary">{{ i.status }}</span></h5>
+            </div>
+            <div class="card-body">
+                <p class="card-title fs-5">Booked date: <strong>{{ i.booked_date }}</strong></p>
+                <p class="card-title fs-5">Selected Package: <strong>{{ i.offer.offer_name }}</strong></p>
+                <p class="card-title fs-5">Total Person: <strong>{{ i.total_person }}</strong></p>
+                <hr>
+                <div class="d-flex justify-content-between card-header">
+                    <p class="card-title fs-4">Total Amount: <strong>${{ i.total_price }}</strong></p>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary">Modify</button>
+                        <button type="button" class="btn btn-outline-primary">Cancel</button>
+                        <button type="button" class="btn btn-success">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

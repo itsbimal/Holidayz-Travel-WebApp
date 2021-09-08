@@ -38,7 +38,7 @@
                 {% if user.is_authenticated %}
 
                     <li class="nav-item rounded">
-                        <a href="/dashboard" class="nav-link {{ activate_home }}" aria-current="page" title="Home"
+                        <a href="/dashboard" class="nav-link py-3 {{ activate_home }}" aria-current="page" title="Home"
                            data-bs-toggle="tooltip" data-bs-placement="bottom">
                             <i class="fa fa-home fa-2x" aria-hidden="true"></i>
                         </a>
@@ -60,7 +60,15 @@
                     </li>
 
                     <li class="ms-4">
-                        <a href="/dashboard/showplaces" class="nav-link py-3" title="Show All Places"
+                        <a href="/dashboard/summary" class="nav-link py-3 {{ activate_booking }}" title="My E-card"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="bottom">
+                            <i class="fa fa-tags fa-2x" aria-hidden="true"></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-4">
+                        <a href="/dashboard/showplaces" class="nav-link py-3 {{ activate_place }}" title="Show All Places"
                            data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-map fa-2x" aria-hidden="true"></i>
@@ -68,7 +76,7 @@
                     </li>
 
                     <li class="ms-4">
-                        <a href="addcountry" class="nav-link py-3" title="Contact"
+                        <a href="/contact" class="nav-link py-3" title="Contact"
                            data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-comments fa-2x" aria-hidden="true"></i>
@@ -84,7 +92,7 @@
                     </li>
 
                     <li>
-                        <a href="/dashboard/showwatchlist" class="nav-link py-3" title="Watchlist"
+                        <a href="/dashboard/showwatchlist" class="nav-link py-3 {{ activate_watchlist }}" title="Watchlist"
                            data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-eye fa-2x" aria-hidden="true"><span>{{ user.count_watchlist }}</span></i>
@@ -93,21 +101,16 @@
 
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-5 active-class" aria-current="page" href="/admins">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-light fs-5 " href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">Explore</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/country">All Countries</a></li>
-                            <li><a class="dropdown-item" href="#">All Places</a></li>
-                        </ul>
+                        <a class="nav-link text-light fs-5 active {{ activate_hhomepage }}" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-5 {{active_pricing}}" href="/pricing">Pricing</a>
+                        <a class="nav-link text-light fs-5 {{ activate_hcountry }}" aria-current="page" href="/country">Country</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-5" href="http://127.0.0.1:8000/">Contact</a>
+                        <a class="nav-link text-light fs-5 {{activate_hpricing}}" href="/pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light fs-5" href="/contact">Contact</a>
                     </li>
                 {% endif %}
             </ul>

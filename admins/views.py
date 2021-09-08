@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+from dashboard.models import Booking
 from .forms import AddCountry
 from .models import Country, Place
 from django.contrib.auth.models import User
@@ -148,4 +150,18 @@ def reactive_admin(request, user_id):
     user.save()
     messages.add_message(request, messages.SUCCESS, 'Admin Account is reactivated!')
     return redirect('/admins/showadmins')
+
+def booking_date(request):
+    booked_data = Booking.objects.all()
+    context = {
+        'booking': booked_data
+    }
+    return render(request,'admins/bookingdata.html', context)
+
+def issued_id(request):
+    id_card = User.objects.all()
+    context = {
+        'idcard': id_card
+    }
+    return render(request,'admins/issuedid.html', context)
 

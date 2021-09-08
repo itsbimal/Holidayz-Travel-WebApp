@@ -1,12 +1,11 @@
 {% extends 'main_layout.html' %} {% load widget_tweaks %} {% load bootstrap %} {% load static %} {% block title %} Register {% endblock title %} {% block header %}
 
-<header id="account">
-    <div class="container">
+    <header id="account">
         <div class="login-reg">
             {% for message in messages %}
-            <div class="alert alert-danger mt-3" role="alert">
-                <p id="messages">{{ message }} <i class="fa fa-check-times" aria-hidden="true"></i></p>
-            </div>
+                <div class="alert alert-danger mt-3" role="alert">
+                    <p id="messages">{{ message }} <i class="fa fa-check-times" aria-hidden="true"></i></p>
+                </div>
             {% endfor %}
 
             <div class="title-text mb-4">
@@ -15,7 +14,8 @@
 
             <table class="table">
                 <form action="" method="POST">
-                    {% csrf_token %} {{ form.as_table }}
+                    {% csrf_token %}
+                    {{ form.as_table }}
                     <tr>
                         <td colspan="2">
                             <input type="submit" value="Signup" class="btn btn-primary w-100">
@@ -26,7 +26,7 @@
             </table>
 
         </div>
-    </div>
-</header>
+
+    </header>
 
 {% endblock %}

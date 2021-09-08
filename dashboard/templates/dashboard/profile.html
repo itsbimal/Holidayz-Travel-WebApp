@@ -15,9 +15,9 @@
                         <div id="card-bdy" class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="/{{ request.user.profile.profile_pic }}" width="160" height="160">
                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
                             <div class="text py-3 fs-4">Username: {{ request.user.profile.username }}</div>
-                            <div class="text py-3 fs-4">Firstname: {{ request.user.profile.firstname }}</div>
-                            <div class="text py-3 fs-4">Lastname: {{ request.user.profile.lastname }}</div>
-                            <div class="text py-3 fs-4">Email: {{ request.user.profile.email }}</div>
+                            <div class="text py-3 fs-4">Firstname: {{ request.user.firstname }}</div>
+                            <div class="text py-3 fs-4">Lastname: <strong>{{ request.user.profile.lastname }}</strong></div>
+                            <div class="text py-3 fs-4">Email: <strong>{{ request.user.profile.email }}</strong></div>
                         </div>
 
                     </div>
@@ -52,25 +52,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Contact Settings</p>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38" name="address"></div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Los Angeles" name="city"></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="USA" name="country"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"><button class="btn btn-primary btn-lg" type="submit">Save&nbsp;Settings</button></div>
-                                    </form>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

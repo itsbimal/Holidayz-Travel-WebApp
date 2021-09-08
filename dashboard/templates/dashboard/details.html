@@ -3,11 +3,12 @@
 
 {% block header %}
     <header>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="w-100">
-            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-                    type="video/mp4">
-
-        </video>
+{#        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="w-100">#}
+{#            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"#}
+{#                    type="video/mp4">#}
+{##}
+{#        </video>#}
+        <img src="{{ details.country.bg_url }}" class="w-100"  style="filter:brightness(90%)">
         <div class="text-white" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
             <h5 class="fw-bold mb-4" style="font-size: 120px; ">Welcome to {{ details.country }} </h5>
             <h2 class="display-2 fw-bold" style=""><i class="fa fa-map-marker"
@@ -59,14 +60,7 @@
                     <h5>Day - Three</h5>
                     <p class="" style="margin-bottom: 30px">{{ details.day_three }}</p>
                 </div>
-                {#                <button class="btn btn-primary w-100" name="details_id" onclick="window.location.href='/dashboard/booking/{{ details.id }}'">Lets book</button>#}
-                <form action="/dashboard/addbooking"><input type="hidden" name="place_id" value="{{ details.id }}"
-                                                            id="place_id">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                        <button type="submit" class="btn btn-success">First Add It</button>
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='/dashboard/booking/{{ details.id }}'" >And Book It</button>
-                    </div>
-                </form>
+                <button type="button" class="btn btn-primary w-100" onclick="window.location.href='/dashboard/booking/{{ details.id }}'" >Let's Make a Great Holiday!</button>
 
             </div>
             <div class="accordion mt-3 mb-3" id="accordionExample">
@@ -135,9 +129,9 @@
 
         <div class="map-iframe shadow" style="border-radius: 0px 30px 30px 0px; overflow: hidden; height: fit-content; >
             <h3 class=" text-center
-        ">Location:</h3>
+        ">Our Agency Location:</h3>
         <iframe width="1000px" height="450px"
-                src="https://maps.google.com/maps?width=700&amp;height=600&amp;hl=en&amp;q=New%20York+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"></iframe>
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.344880064056!2d85.31233551500853!3d27.70663603213013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19006da38c97%3A0xeb1680160e08401c!2sShankhadhar%20Park!5e0!3m2!1sen!2snp!4v1630984978600!5m2!1sen!2snp" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
         <form action="/dashboard/watchlist"><input type="hidden" name="place_id" value="{{ details.id }}" id="place_id">
             <button type="submit" class="btn btn-danger w-100">Add to watch list</button>

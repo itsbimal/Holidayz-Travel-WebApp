@@ -15,5 +15,7 @@ urlpatterns = [
     path('deactivate_user/<int:user_id>', views.deactivate_user),
     path('reactive_admins/<int:user_id>', views.reactive_admin),
     path('reactive_user/<int:user_id>', views.reactive_user),
+    path('bookingdata/', views.booking_date),
+    path('issuedid/', views.issued_id)
 
 ]

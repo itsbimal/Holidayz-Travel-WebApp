@@ -17,8 +17,10 @@ urlpatterns = [
     path('watchlist/', views.watchlist, name='watchlist'),
     path('showwatchlist/', views.show_watchlist, name='showwatchlist'),
     path('addbooking/', views.add_booking, name='addbooking'),
+    path('areyousure/<int:place_id>', views.areyou_sure),
     path('deletebooking/<int:booking_id>', views.delete_booking),
     path('booking/<int:place_id>', views.booking),
+    path('summary/', views.booking_summary)
 ]
 
 if settings.DEBUG:

@@ -6,7 +6,7 @@ class Country(models.Model):
     Name = models.CharField(max_length=120)
     Description = models.CharField(max_length=60)
     Number = models.IntegerField()
-    video_url = models.URLField()
+    bg_url = models.URLField()
     Image = models.ImageField(upload_to="static/uploads/country")
 
     def __str__(self):
@@ -33,6 +33,7 @@ class Place(models.Model):
     dest_location = models.CharField(max_length=120)
     dest_image = models.ImageField(upload_to="static/uploads/destination")
     day_one = models.TextField()
+    total_person = models.IntegerField(max_length=10, default=2)
     day_two = models.TextField()
     day_three = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True, null=True)

@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block header %}
+    <header id="areyousure">
+
+    <div>
+        <h1  class="display-1 fw-bold h1text">Are you sure want book holiday on this?</h1>
+        <button type="button" class="btn btn-primary btn-lg">Yep! I am absolutely sure</button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='/dashboard/booking/{{ details.id }}'">Nope, I need to revise</button>
+    </div>
+
+    </header>
+{% endblock %}
