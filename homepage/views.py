@@ -89,7 +89,7 @@ def contact(request):
         form = ContactForms(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.SUCCESS, "Congratulations! Contact form has been submitted")
+            messages.add_message(request, messages.SUCCESS, "Contact form has been submitted")
             return redirect('/contact')
         else:
             messages.add_message(request, messages.ERROR, "Error")

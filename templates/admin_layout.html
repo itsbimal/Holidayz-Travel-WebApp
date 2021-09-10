@@ -9,6 +9,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="{% static 'css/admins.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>{% block title %} {% endblock title %}</title>
 </head>
@@ -73,39 +74,39 @@
         </div>
 
         <ul class="list-unstyled components" >
-            <li class="active">
-                <a href="/admins" aria-expanded="false"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <li >
+                <a href="/admins" class="{{ activate_adminhome }}" aria-expanded="false"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
 
             <li>
-                <a href="/admins/bookingdata" aria-expanded="false"><i class="fa fa-ticket-alt" aria-hidden="true"></i>Booked
+                <a href="/admins/bookingdata" class="{{ activate_booking }}" aria-expanded="false"><i class="fa fa-ticket-alt" aria-hidden="true"></i>Booked
                     Ticket</a>
             </li>
 
             <li>
-                <a href="/admins/addcountry" aria-expanded="false" class="{{ activate_login }}"><i class="fa fa-globe"
+                <a href="/admins/addcountry" aria-expanded="false" class="{{ activate_country }}"><i class="fa fa-globe"
                                                                                                    aria-hidden="true"></i>
                     Country</a>
             </li>
 
             <li>
-                <a href="/admins/addplace" aria-expanded="false"><i class="fa fa-location-arrow" aria-hidden="true"></i>Places</a>
+                <a href="/admins/addplace" class="{{ activate_place }}" aria-expanded="false"><i class="fa fa-location-arrow" aria-hidden="true"></i>Places</a>
             </li>
 
 
             <li>
-                <a href="/admins/issuedid" aria-expanded="false"><i class="fa fa-id-card" aria-hidden="true"></i> ID-Card
+                <a href="/admins/issuedid" class="{{ activate_card }}" aria-expanded="false"><i class="fa fa-id-card" aria-hidden="true"></i> ID-Card
                     issued</a>
             </li>
             <li>
                 <a href="#pageSubmenu" aria-expanded="false"><i class="fa fa-bell" aria-hidden="true"></i> Requests</a>
             </li>
             <li>
-                <a href="/admins/showusers" aria-expanded="false"><i class="fa fa-users"
+                <a href="/admins/showusers" class="{{ activate_user }}" aria-expanded="false"><i class="fa fa-users"
                                                                 aria-hidden="true"></i>Travellers</a>
             </li>
             <li>
-                <a href="/admins/showadmins" aria-expanded="false"><i class="fa fa-users"
+                <a href="/admins/showadmins" class="{{ activate_admins }}" aria-expanded="false"><i class="fa fa-users"
                                                                 aria-hidden="true"></i>All Admins</a>
             </li>
             <li>

@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 from admins.models import Country, Place, Offer
 from dashboard.models import Profile, Watchlist, Booking, Booking_Draft
 from homepage.auth import user_only
+from .forms import ProfileForm
 
 
 @login_required
@@ -42,7 +43,18 @@ def country_list(request):
 
 @login_required
 def profile(request):
-    return render(request, 'dashboard/profile.html')
+    profile = request.user.profile
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile has been refined successfully!')
+            return redirect('/dashboard/profile')
+    context = {
+        'form': ProfileForm(instance=profile)
+    }
+    return render(request, 'dashboard/profile.html', context)
 
 
 # @login_required

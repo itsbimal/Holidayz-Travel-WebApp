@@ -1,4 +1,5 @@
 {% extends 'main_layout.html' %}
+{% load bootstrap %}
 {% load static %}
 
 {% block title %}
@@ -8,16 +9,25 @@
 {% block header %}
     <div>
         <div class="container-fluid" id="profile-s">
-            <h3 class="text-dark mb-4 display-5 mt-lg-5">It's your profile</h3>
+            <h3 class="text-dark mb-4 display-5 mt-lg-5">It's your own profile</h3>
             <div class="row mb-3">
                 <div class="col-lg-4">
                     <div>
-                        <div id="card-bdy" class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="/{{ request.user.profile.profile_pic }}" width="160" height="160">
-                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
-                            <div class="text py-3 fs-4">Username: {{ request.user.profile.username }}</div>
-                            <div class="text py-3 fs-4">Firstname: {{ request.user.firstname }}</div>
-                            <div class="text py-3 fs-4">Lastname: <strong>{{ request.user.profile.lastname }}</strong></div>
-                            <div class="text py-3 fs-4">Email: <strong>{{ request.user.profile.email }}</strong></div>
+                        <div id="card-bdy" class="card-body shadow">
+                            <div class="card-body text-center">
+                                <img class="rounded-circle mb-3 mt-4" src="/{{ request.user.profile.profile_pic }}"
+                                     width="160" height="160">
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm" type="button">Looking Hero!</button>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <p class="fs-3 text"><u>Current Details</u></p>
+                            <p class="fs-5">username: <strong>{{ request.user.profile.username }}</strong></p>
+                            <p class="fs-5">fullname: {{ request.user.profile.firstname }} {{ request.user.profile.lastname }}</p>
+                            <p class="fs-5">email: <strong>{{ request.user.profile.email }}</strong></p>
+                            <p class="fs-5">phone: <strong>{{ request.user.profile.phone }}</strong></p>
                         </div>
 
                     </div>
@@ -26,33 +36,30 @@
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col">
-                            <div class="card mb-3" >
+                            <div class="card mb-3 shadow border-0">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">User Settings</p>
+                                    <p class="text-primary m-0 fs-3">Change your profile to hero!</p>
                                 </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
-                                            </div>
+
+                                <form class="p-4 p-md-5 border rounded-3 bg-white my-form" action="" method="POST" id="myform"
+                                      enctype="multipart/form-data" >
+                                    {% csrf_token %}
+                                    {{ form | bootstrap }}
+                                    <br>
+                                    <button class="w-100 btn btn-sm btn-primary" type="submit">Let's do it</button>
+                                    <hr class="my-4">
+                                    {% for message in messages %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong>Great! </strong>{{ message }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"><button class="btn btn-primary btn-lg" type="submit">Save Settings</button></div>
-                                    </form>
-                                </div>
+                                    {% endfor %}
+
+                                </form>
+
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

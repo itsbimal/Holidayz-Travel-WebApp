@@ -367,7 +367,7 @@ section {
 }
 
 #card-bdy {
-    border-radius: 30px;
+    border-radius: 10px;
 }
 #place-margin{
     margin-top: 50px;
@@ -387,6 +387,11 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-#myForm input{
+#myform input{
     width: 100%;
+}
+
+#myform .form-group label{
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
