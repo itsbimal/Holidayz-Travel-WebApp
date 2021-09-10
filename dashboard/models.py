@@ -38,7 +38,7 @@ class Profile(models.Model):
 class Watchlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
-    person = models.IntegerField(max_length=2, default=1)
+    person = models.IntegerField( default=1)
 
 
 class Booking_Draft(models.Model):
