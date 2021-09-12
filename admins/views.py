@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -8,7 +9,7 @@ from .models import Country, Place
 from django.contrib.auth.models import User
 from homepage.auth import admin_only, user_only
 from dashboard.models import *
-from homepage.models import *
+from homepage.models import ContactForm
 
 
 def admin_dashboard(request):
@@ -200,4 +201,15 @@ def issued_id(request):
         'activate_card': 'active bg-primary'
     }
     return render(request,'admins/issuedid.html', context)
+
+def contact_form(request):
+    contactform = ContactForm.objects.all()
+    context = {
+        'contact': contactform
+    }
+    return render(request,'admins/contactform.html', context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
