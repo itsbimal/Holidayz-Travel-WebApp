@@ -51,6 +51,7 @@ class Booking(models.Model):
     STATUS = (
         ('In-Review', 'In-Review'),
         ('Confirmed', 'Confirmed'),
+        ('Denied', 'Denied'),
     )
 
     place = models.ForeignKey(Place, null=True, on_delete=models.CASCADE)

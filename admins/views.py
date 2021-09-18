@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from dashboard.models import Booking
-from .forms import AddCountry, StatusForm
+from .forms import AddCountry, StatusForm, AddAdmin, UpdatePlace, UpdateCountry
 from .models import Country, Place
 from django.contrib.auth.models import User
 from homepage.auth import admin_only, user_only
@@ -231,8 +231,57 @@ def update_status(request, pk):
         form.save()
         return redirect('/admins/bookingdata')
 
-
     return render(request, 'admins/update_status.html', {'status': form})
 
 
+def add_admin(request):
+    if request.method == 'POST':
+        form = AddAdmin(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "New admin has been added in list!")
+            return redirect('/admins/showadmins')
+        else:
+            messages.add_message(request, messages.ERROR, "Error")
+            return redirect('/contact')
+    context = {
+        'form': AddAdmin
+    }
+    return render(request, 'admins/add_admin.html', context)
 
+
+def update_place(request, place_id):
+    place = Place.objects.get(id=place_id)
+
+    if request.method == "POST":
+        place.dest_name = request.POST.get('asp_name')
+        place.dest_price = request.POST.get('asp_price')
+        place.dest_type = request.POST.get('asp_type')
+        place.dest_desc = request.POST.get('asp_desc')
+        place.dest_location = request.POST.get('asp_location')
+        place.day_one = request.POST.get('day_one')
+        place.day_two = request.POST.get('day_two')
+        place.day_three = request.POST.get('day_three')
+        place.save()
+        return redirect('/admins/showplace')
+
+    context = {
+        'place': place
+    }
+    return render(request, 'admins/update_place.html', context)
+
+
+def update_country(request, country_id):
+    country = Country.objects.get(id=country_id)
+
+    if request.method == 'POST':
+        form = UpdateCountry(request.POST, request.FILES, instance=country)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Country has been updated successfully')
+            return redirect('/admins/addcountry')
+
+    context = {
+        'form': UpdateCountry(instance=country)
+    }
+    return render(request, 'admins/update_country.html', context)

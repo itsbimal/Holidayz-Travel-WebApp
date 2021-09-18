@@ -54,10 +54,8 @@
                                     <td>{{ i.preferred_call_date }}</td>
                                     <td>{{ i.message }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm"
-                                           href="/products/updatestudent/{{ student.id }}">Edit</a>
                                         <a class="btn btn-danger btn-sm" href="/products/deletestudent/{{ student.id }}"
-                                           onclick="return confirm('Are you sure bro?')">Delete</a>
+                                           onclick="return confirm('Are you sure bro?')">Processed</a>
                                     </td>
                                 </tr>
                             {% endfor %}

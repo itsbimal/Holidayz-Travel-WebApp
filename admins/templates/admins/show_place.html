@@ -64,12 +64,12 @@
                                     <td>{{ i.day_one }}</td>
                                     <td>{{ i.day_two }}</td>
                                     <td>{{ i.day_three }}</td>
-                                    <td><img src="/{{ i.dest_image }}" alt="Place Image" width="15%"></td>
+                                    <td><img src="/{{ i.dest_image }}" alt="Place Image" class="w-100"></td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm"
-                                           href="/products/updatestudent/{{ student.id }}">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="/products/deletestudent/{{ student.id }}"
-                                           onclick="return confirm('Are you sure bro?')">Delete</a>
+                                        <a class="btn btn-primary"
+                                           href="/admins/updateplace/{{ i.id }}"><i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                        <a class="btn btn-danger" href="/products/deletestudent/{{ student.id }}" style="margin-top: 10px"
+                                           onclick="return confirm('Are you sure bro?')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             {% endfor %}

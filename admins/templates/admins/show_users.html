@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header py-3 d-flex">
                     <p class="text-primary m-2 fw-bold ">All Travellers Information</p>
-                    <a href="/admins/addplace" class="btn btn-primary ms-auto">Add new travellers</a>
+                    <a href="" class="btn btn-primary ms-auto">You can control travellers account</a>
                 </div>
                 {% for m in messages %}
                     <div class="alert alert-success alert-dismissible fade show justify-content-between" role="alert">
@@ -63,9 +63,9 @@
                                     <td>{{ i.is_active }}</td>
                                     <td>{{ i.is_staff }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" href="/admins/promote_user/{{ i.id }}"
-                                           onclick="return confirm('Are you sure you want to promote?')">Promote to
-                                            admin</a>
+{#                                        <a class="btn btn-primary btn-sm" href="/admins/promote_user/{{ i.id }}"#}
+{#                                           onclick="return confirm('Are you sure you want to promote?')">Promote to#}
+{#                                            admin</a>#}
                                         <a class="btn btn-danger btn-sm" href="/admins/deactivate_user/{{ i.id }}"
                                            onclick="return confirm('Are you sure bro?')">Deactivate</a>
                                         <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure want to Reactive?')" href="/admins/reactive_user/{{ i.id }}">Reactive</a>

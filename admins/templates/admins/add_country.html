@@ -6,18 +6,18 @@
     <div class="container col-xl-10 col-xxl-8 px-4 py-5">
         <div class="row align-items-center g-lg-5 py-5">
             <div class="col-lg-7 text-center text-lg-start">
-                <h1 class="display-4 fw-bold lh-1 mb-3">You are adding country for your travel agency</h1>
-                <p class="col-lg-10 fs-4">Its a simple way, Size: 400x500 </p>
-            </div>
-            <div class="col-md-10 mx-auto col-lg-5 fs-5">
-                <form class="p-4 p-md-5 border rounded-3 bg-white" action="" method="POST"
+                <form class="p-4 border rounded-3 bg-white myform" action="" method="POST"
                       enctype="multipart/form-data">
                     {% csrf_token %} {{ form | bootstrap }}
                     <br>
-                    <button class="w-100 btn btn-sm btn-primary" type="submit">Add New Country</button>
+                    <button class="w-100 btn btn-primary" type="submit">Add New Country</button>
                     <hr class="my-4">
                     <small class="text-muted">Be sure on your information.</small>
                 </form>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5 fs-5">
+                <h1 class="display-5 h1text mb-3">You are adding new country</h1>
+                <p class="col-lg-10 fs-4">Its a simple way, Size: 400x500 </p>
             </div>
         </div>
 
@@ -52,7 +52,10 @@
                                 {{ country.Description }}
                             </p>
                             <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-success w-50">Edit</button>
+                                <button type="button" class="btn btn-success w-50"><a
+                                        href="/admins/updatecountry/{{ country.id }}"
+                                        class="text-white text-decoration-none">Edit</a></button>
+
                                 <button type="button" class="btn btn-danger w-50"><a
                                         href="/admins/deletecountry/{{ country.id }}"
                                         class="text-white text-decoration-none">Delete</a></button>
