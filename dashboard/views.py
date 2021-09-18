@@ -8,6 +8,7 @@ from admins.models import Country, Place, Offer
 from dashboard.models import Profile, Watchlist, Booking, Booking_Draft
 from homepage.auth import user_only
 from .forms import ProfileForm
+# from .filters import CountryFilter
 
 
 @login_required
@@ -34,9 +35,11 @@ def ecard(request):
 
 def country_list(request):
     data = Country.objects.all().order_by('-id')
+    # country_filter = CountryFilter(request.GET, queryset=data)
     context = {
         'data': data,
-        'activate_explore': 'active border-bottom active-class'
+        'activate_explore': 'active border-bottom active-class',
+        # 'country_filter': country_filter
     }
     return render(request, 'dashboard/country.html', context)
 
@@ -62,7 +65,7 @@ def show_places(request):
     place = Place.objects.all().order_by('-id')
     context = {
         'places': place,
-        'activate_place': 'active border-bottom active-class'
+        'activate_place': 'active border-bottom active-class h1text'
     }
     return render(request, 'dashboard/showplaces.html', context)
 
@@ -104,19 +107,6 @@ def show_watchlist(request):
                        'activate_watchlist': 'active border-bottom active-class'})
 
 
-def add_booking(request):
-    user = request.user
-    place_id = request.GET.get('place_id')
-    places = Place.objects.get(id=place_id)
-    Booking_Draft(user=user, place=places).save()
-    return redirect('')
-
-
-def delete_booking(request, booking_id):
-    booking = Booking_Draft.objects.get(id=booking_id)
-    booking.delete()
-    messages.add_message(request, messages.SUCCESS, 'Booking is deleted successfully')
-    return HttpResponseRedirect("")
 
 def areyou_sure(request):
     return render(request,'dashboard/sure.html')
@@ -125,7 +115,6 @@ def areyou_sure(request):
 def booking(request, place_id):
     user = request.user
     place = Place.objects.get(id=place_id)
-    booking_place = Booking_Draft.objects.filter(user=user)
     place_info = Place.objects.filter(id=place_id)
     offers = Offer.objects.all()
 
@@ -150,7 +139,6 @@ def booking(request, place_id):
 
 
     context = {
-        'placed': booking_place,
         'offers': offers,
         'infos': place_info
     }

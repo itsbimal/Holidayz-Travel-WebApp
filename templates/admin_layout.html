@@ -19,8 +19,7 @@
     <div class="container-fluid">
 
         <form class="d-none d-sm-inline-block me-auto ms-md-4 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
-                                            placeholder="Search for">
+            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for">
                 <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -44,73 +43,67 @@
 
             <div class="d-none d-sm-block topbar-divider"></div>
             <button class="btn btn-sm hover"><a href="/">What visitors see</a></button>
-            <li class="nav-item dropdown no-arrow">
-                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                        class="d-none d-lg-inline me-2 text-gray-600 small">Admin, Bimal Shrestha</span><img
-                        class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
-                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item"
-                                                                                             href="#"><i
-                            class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
-                            class="dropdown-item" href="#"><i
-                            class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity
-                            log</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i
-                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
-                    </div>
-                </div>
-            </li>
+            <button class="btn btn-sm hover text-danger"><a href="/">Admin {{ request.user.username }}</a></button>
+
         </ul>
     </div>
 </nav>
 
-<div class="wrapper" >
-    <nav id="sidebar" >
+<div class="wrapper">
+    <nav id="sidebar">
         <div class="sidebar-header">
             <h3>Admin Panel</h3>
             <strong>AP</strong>
             </button>
         </div>
 
-        <ul class="list-unstyled components" >
-            <li >
-                <a href="/admins" class="{{ activate_adminhome }}" aria-expanded="false"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/admins" class="{{ activate_adminhome }}" aria-expanded="false"><i class="fa fa-home"
+                                                                                            aria-hidden="true"></i> Home</a>
             </li>
 
             <li>
-                <a href="/admins/bookingdata" class="{{ activate_booking }}" aria-expanded="false"><i class="fa fa-ticket-alt" aria-hidden="true"></i>Booked
+                <a href="/admins/bookingdata" class="{{ activate_booking }}" aria-expanded="false"><i
+                        class="fa fa-ticket-alt" aria-hidden="true"></i>Booked
                     Ticket</a>
             </li>
 
             <li>
                 <a href="/admins/addcountry" aria-expanded="false" class="{{ activate_country }}"><i class="fa fa-globe"
-                                                                                                   aria-hidden="true"></i>
+                                                                                                     aria-hidden="true"></i>
                     Country</a>
             </li>
 
             <li>
-                <a href="/admins/addplace" class="{{ activate_place }}" aria-expanded="false"><i class="fa fa-location-arrow" aria-hidden="true"></i>Places</a>
+                <a href="/admins/addplace" class="{{ activate_place }}" aria-expanded="false"><i
+                        class="fa fa-location-arrow" aria-hidden="true"></i>Places</a>
             </li>
 
 
             <li>
-                <a href="/admins/issuedid" class="{{ activate_card }}" aria-expanded="false"><i class="fa fa-id-card" aria-hidden="true"></i> ID-Card
+                <a href="/admins/issuedid" class="{{ activate_card }}" aria-expanded="false"><i class="fa fa-id-card"
+                                                                                                aria-hidden="true"></i>
+                    ID-Card
                     issued</a>
             </li>
             <li>
-                <a href="/admins/contact" class="{{ activate_contact }}"  aria-expanded="false"><i class="fa fa-bell" aria-hidden="true"></i> Requests</a>
+                <a href="/admins/contact" class="{{ activate_contact }}" aria-expanded="false"><i class="fa fa-bell"
+                                                                                                  aria-hidden="true"></i>
+                    Requests</a>
             </li>
             <li>
                 <a href="/admins/showusers" class="{{ activate_user }}" aria-expanded="false"><i class="fa fa-users"
-                                                                aria-hidden="true"></i>Travellers</a>
+                                                                                                 aria-hidden="true"></i>Travellers</a>
             </li>
             <li>
                 <a href="/admins/showadmins" class="{{ activate_admins }}" aria-expanded="false"><i class="fa fa-users"
-                                                                aria-hidden="true"></i>All Admins</a>
+                                                                                                    aria-hidden="true"></i>All
+                    Admins</a>
             </li>
             <li>
-                <a href="/admins/logout" aria-expanded="false"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Sign
+                <a href="/admins/logout" onclick="return confirm('Are you sure want to logout?')" aria-expanded="false"><i
+                        class="fa fa-sign-out-alt" aria-hidden="true"></i> Sign
                     Out</a>
             </li>
 
@@ -119,9 +112,9 @@
 
     </nav>
     <div class="content">
-        <button type="button" id="sidebarCollapse" class="btn btn-white"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <button type="button" id="sidebarCollapse" class="btn btn-white"><i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
     </div>
-
 
 
     <div class="container-fluid">

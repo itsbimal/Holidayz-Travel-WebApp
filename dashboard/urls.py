@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.http import HttpResponse
-
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -16,11 +16,13 @@ urlpatterns = [
     path('places/<int:c_id>', views.destination_list, name='destination_list'),
     path('watchlist/', views.watchlist, name='watchlist'),
     path('showwatchlist/', views.show_watchlist, name='showwatchlist'),
-    path('addbooking/', views.add_booking, name='addbooking'),
-    path('areyousure/<int:place_id>', views.areyou_sure),
-    path('deletebooking/<int:booking_id>', views.delete_booking),
+    path('areyousure/', views.areyou_sure),
     path('booking/<int:place_id>', views.booking),
-    path('summary/', views.booking_summary)
+    path('summary/', views.booking_summary),
+    path('password_change', auth_views.PasswordChangeView.as_view(template_name='dashboard/password_change.html')),
+    path('password_change_done',
+         auth_views.PasswordResetDoneView.as_view(template_name='dashboard/password_change_done.html'),
+         name='password_change_done'),
 ]
 
 if settings.DEBUG:

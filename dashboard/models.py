@@ -23,7 +23,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=10)
-    profile_pic = models.FileField(upload_to='static/uploads/profile', default='static/images/prof.png')
+    profile_pic = models.FileField(upload_to='static/uploads/profile', default='static/images/user.png')
     ecard_no = models.CharField(max_length=16, default=random_ecard)
     ecard_cvv = models.CharField(max_length=3, default=random_cvv)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -50,7 +50,7 @@ class Booking_Draft(models.Model):
 class Booking(models.Model):
     STATUS = (
         ('In-Review', 'In-Review'),
-        ('Confirmed', 'Confirmend'),
+        ('Confirmed', 'Confirmed'),
     )
 
     place = models.ForeignKey(Place, null=True, on_delete=models.CASCADE)

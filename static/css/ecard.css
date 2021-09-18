@@ -5,7 +5,8 @@
     /*justify-content: center;*/
     align-items: center;
     min-height: 100vh;
-    background:url("../images/ecard.jpg");
+    background:url("../images/ecard1.jpg");
+    background-size: cover;
 }
 .mt-5{
     padding-top: 150px;
@@ -29,7 +30,7 @@
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(28px);
+    backdrop-filter: blur(100px);
     transform-style: preserve-3d;
     transition: 1s;
     backface-visibility: hidden;

@@ -1,6 +1,6 @@
 {% extends 'main_layout.html' %} {% load widget_tweaks %} {% load bootstrap %} {% load static %} {% block title %} Register {% endblock title %} {% block header %}
 
-    <header id="account">
+   <header id="areyousure">
         <div class="login-reg">
             {% for message in messages %}
                 <div class="alert alert-danger mt-3" role="alert">
@@ -13,9 +13,9 @@
             </div>
 
             <table class="table">
-                <form action="" method="POST">
+                <form action="" method="POST" id="changepp">
                     {% csrf_token %}
-                    {{ form.as_table }}
+                    {{ form | bootstrap }}
                     <tr>
                         <td colspan="2">
                             <input type="submit" value="Signup" class="btn btn-primary w-100">

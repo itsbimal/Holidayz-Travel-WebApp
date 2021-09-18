@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from dashboard.models import Booking
-from .forms import AddCountry
+from .forms import AddCountry, StatusForm
 from .models import Country, Place
 from django.contrib.auth.models import User
 from homepage.auth import admin_only, user_only
 from dashboard.models import *
 from homepage.models import ContactForm
+from .filters import BookingFilter
 
 
 def admin_dashboard(request):
@@ -26,7 +27,7 @@ def admin_dashboard(request):
     card_count = users.count()
 
     user_count = users.filter(is_staff=0).count()
-    admin_count = users.filter(is_staff=1 ).count()
+    admin_count = users.filter(is_staff=1).count()
 
     user_info = users.filter(is_staff=0)
     admin_info = users.filter(is_staff=1)
@@ -67,7 +68,7 @@ def delete_country(request, country_id):
     country = Country.objects.get(id=country_id)
     country.delete()
     messages.add_message(request, messages.SUCCESS, 'Country is deleted successfully')
-    return redirect('/dashboard/booking')
+    return redirect('/admins/addcountry')
 
 
 def add_place(request):
@@ -107,6 +108,7 @@ def add_place(request):
             return HttpResponse('Unsuccessful')
 
     return render(request, 'admins/add_place.html', context)
+
 
 def show_place(request):
     data = Place.objects.all().order_by('-id')
@@ -171,6 +173,7 @@ def deactivate_admin(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'Admin Account Deactivated!')
     return redirect('/admins/showadmins')
 
+
 def reactive_user(request, user_id):
     user = User.objects.get(id=user_id)
     user.is_active = True
@@ -186,13 +189,18 @@ def reactive_admin(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'Admin Account is reactivated!')
     return redirect('/admins/showadmins')
 
+
 def booking_date(request):
     booked_data = Booking.objects.all()
+    booking_filter = BookingFilter(request.GET, queryset=booked_data)
+    booking_final = booking_filter.qs
     context = {
-        'booking': booked_data,
-        'activate_booking': 'active bg-primary'
+        'booking': booking_final,
+        'activate_booking': 'active bg-primary',
+        'booking_filter': booking_filter
     }
-    return render(request,'admins/bookingdata.html', context)
+    return render(request, 'admins/bookingdata.html', context)
+
 
 def issued_id(request):
     id_card = User.objects.all()
@@ -200,16 +208,31 @@ def issued_id(request):
         'idcard': id_card,
         'activate_card': 'active bg-primary'
     }
-    return render(request,'admins/issuedid.html', context)
+    return render(request, 'admins/issuedid.html', context)
+
 
 def contact_form(request):
     contactform = ContactForm.objects.all()
     context = {
         'contact': contactform
     }
-    return render(request,'admins/contactform.html', context)
+    return render(request, 'admins/contactform.html', context)
+
 
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+def update_status(request, pk):
+    booking = Booking.objects.get(id=pk)
+    form = StatusForm(request.POST, instance=booking)
+    if form.is_valid():
+        form.save()
+        return redirect('/admins/bookingdata')
+
+
+    return render(request, 'admins/update_status.html', {'status': form})
+
+
 
