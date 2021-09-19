@@ -10,7 +10,7 @@ from admins.models import Country, Place
 from .auth import unauthenticated_user
 from dashboard.models import Profile
 
-
+@unauthenticated_user
 def index_page(request):
     context = {
         'activate_hhomepage': 'active border-bottom active-class',
@@ -65,7 +65,7 @@ def register(request):
     }
     return render(request, 'homepage/register.html', context)
 
-
+@unauthenticated_user
 def country_list(request):
     data = Country.objects.all().order_by('-id')
     context = {
@@ -74,7 +74,7 @@ def country_list(request):
     }
     return render(request, 'homepage/country.html', context)
 
-
+@unauthenticated_user
 def pricing_page(request):
     context = {
         'active_pricing': 'active',

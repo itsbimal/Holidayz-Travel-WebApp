@@ -11,28 +11,31 @@ from .forms import ProfileForm
 # from .filters import CountryFilter
 
 
-@login_required
+@login_required(login_url='login')
+@user_only
 def index_page(request):
     context = {
         'activate_home': 'active border-bottom active-class'
     }
     return render(request, 'dashboard/index.html', context)
 
-
-@login_required
+@login_required(login_url='login')
+@user_only
 def logout_view(request):
     logout(request)
     return redirect('/')
 
 
-@login_required
+@login_required(login_url='login')
+@user_only
 def ecard(request):
     context = {
-        'activate_ecard': 'active border-bottom active-class'
+        'activate_ecard': 'active border-bottom'
     }
     return render(request, 'dashboard/ecard.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def country_list(request):
     data = Country.objects.all().order_by('-id')
     # country_filter = CountryFilter(request.GET, queryset=data)
@@ -44,7 +47,8 @@ def country_list(request):
     return render(request, 'dashboard/country.html', context)
 
 
-@login_required
+@login_required(login_url='login')
+@user_only
 def profile(request):
     profile = request.user.profile
 
@@ -60,7 +64,8 @@ def profile(request):
     return render(request, 'dashboard/profile.html', context)
 
 
-# @login_required
+@login_required(login_url='login')
+@user_only
 def show_places(request):
     place = Place.objects.all().order_by('-id')
     context = {
@@ -69,7 +74,8 @@ def show_places(request):
     }
     return render(request, 'dashboard/showplaces.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def place_details(request, name):
     place = Place.objects.get(dest_name=name)
     context = {
@@ -78,7 +84,8 @@ def place_details(request, name):
     }
     return render(request, 'dashboard/details.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def destination_list(request, c_id):
     dests = Country.objects.get(id=c_id)
     print(dests)
@@ -87,7 +94,8 @@ def destination_list(request, c_id):
     }
     return render(request, 'dashboard/places.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def watchlist(request):
     user = request.user
     place_id = request.GET.get('place_id')
@@ -95,7 +103,8 @@ def watchlist(request):
     Watchlist(user=user, place=places).save()
     return redirect('/')
 
-
+@login_required(login_url='login')
+@user_only
 def show_watchlist(request):
     watchlist_count = Watchlist.objects.all().count()
 
@@ -107,11 +116,14 @@ def show_watchlist(request):
                        'activate_watchlist': 'active border-bottom active-class'})
 
 
-
+@login_required(login_url='login')
+@user_only
 def areyou_sure(request):
     return render(request,'dashboard/sure.html')
 
 
+@login_required(login_url='login')
+@user_only
 def booking(request, place_id):
     user = request.user
     place = Place.objects.get(id=place_id)
@@ -144,7 +156,8 @@ def booking(request, place_id):
     }
     return render(request, 'dashboard/booking.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def booking_summary(request):
     user = request.user
     booking_details = Booking.objects.filter(user=user).order_by('-id')
