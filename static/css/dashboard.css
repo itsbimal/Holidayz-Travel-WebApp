@@ -44,7 +44,7 @@
 }
 
 #header-first {
-    background-image: linear-gradient(40deg, rgb(5 5 5 / 25%) 21%, transparent), url(../images/head1.jpg);
+    background-image: linear-gradient(40deg, rgb(5 5 5 /45%) 21%, transparent), url(../images/head1.jpg);
     background-size: cover;
     height: 95vh;
 }

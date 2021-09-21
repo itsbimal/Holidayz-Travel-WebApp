@@ -2,15 +2,10 @@
 {% load static %}
 
 {% block header %}
-
     <section id="featured-box">
         <div class="container my-5">
             <div class="intro">
                 <h1 class="display-2 fw-semibold py-4 ">Browse Catalog</h1>
-                <form action="" class="form" method="get">
-                    {{ country_filter.form }}
-                    <button class="btn btn-primary btn-sm" type="submit">Search</button>
-                </form>
             </div>
             <div class="row">
                 {% if data %}
@@ -22,12 +17,10 @@
                                 <div class="desc">{{ country.Description }}</div>
                             </div>
                         </div>
-
                     {% endfor %}
                 {% endif %}
-
             </div>
         </div>
     </section>
-
 {% endblock header %}
+

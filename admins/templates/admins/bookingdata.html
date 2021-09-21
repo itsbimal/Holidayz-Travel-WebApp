@@ -1,8 +1,7 @@
 {% extends 'admin_layout.html' %}
 {% load bootstrap %}
 {% load static %}
-{% block title %}Admin Dashboard{% endblock title %}
-
+{% block title %}Booking Data{% endblock title %}
 
 {% block main %}
     <div class="d-flex justify-content-between">
@@ -43,11 +42,10 @@
                 <hr>
                 <div class="d-flex justify-content-between card-header">
                     <p class="card-title fs-4">Total Amount: <strong>${{ i.total_price }}</strong></p>
-                    <button type="button" class="btn btn-danger"><a href="/admins/update_status/{{ i.id }}">Decide what
-                        to do</a></button>
-
+                    <button type="button" class="btn btn-danger"><a href="/admins/update_status/{{ i.id }}">Decide what to do</a></button>
                 </div>
             </div>
         </div>
     {% endfor %}
 {% endblock %}
+

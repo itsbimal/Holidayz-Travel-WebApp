@@ -1,9 +1,9 @@
 {% extends 'main_layout.html' %}
 {% load static %}
-
+{% block title %}Travel Card{% endblock title %}
 
 {% block header %}
-<h1 class="text-white">We made you the card</h1>
+    <h1 class="text-white">We made you the card</h1>
     <section class="ecard-section">
         <h1 class="text-danger display-3 fw-bold mt-5 ">Travel Card</h1>
 
@@ -23,7 +23,9 @@
                     <div class="cvv">{{ request.user.profile.ecard_cvv }}</div>
                 </div>
                 <p class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis ex nec nulla posuere sollicitudin. Proin nec orci at est pellentesque malesuada eu a neque. Maecenas quis porttitor odio. Praesent faucibus dui nisl, ac luctus mauris pulvinar in.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis ex nec nulla posuere
+                    sollicitudin. Proin nec orci at est pellentesque malesuada eu a neque. Maecenas quis porttitor odio.
+                    Praesent faucibus dui nisl, ac luctus mauris pulvinar in.
                     Morbi vitae ante a nunc ullamcorper rutrum. Donec non interdum purus, gravida elementum mi.
                 </p>
             </div>

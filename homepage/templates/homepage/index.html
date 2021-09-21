@@ -1,8 +1,5 @@
 {% extends 'main_layout.html' %}
 {% load static %}
-{% block css_file %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.js' %}">
-{% endblock css_file %}
 {% block title %}HolidayZ{% endblock title %}
 
 {% block header %}
@@ -251,15 +248,10 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 {% endblock features %}
-
-
-
-{% block timeline %}
-
-{% endblock timeline %}
 
 {% block js_file %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 {% endblock js_file %}
+
+
