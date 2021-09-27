@@ -1,13 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from dashboard.models import Booking
-from .forms import AddCountry, StatusForm, AddAdmin, UpdatePlace, UpdateCountry
-from .models import Country, Place
-from django.contrib.auth.models import User
-from homepage.auth import admin_only, user_only
+from .forms import AddCountry, StatusForm, AddAdmin, UpdateCountry
+
+from homepage.auth import admin_only
 from dashboard.models import *
 from homepage.models import ContactForm
 from .filters import BookingFilter
@@ -18,19 +15,17 @@ from .filters import BookingFilter
 def admin_dashboard(request):
     booking = Booking.objects.all()
     booking_count = booking.count()
-
     country = Country.objects.all()
     country_count = country.count()
-
     place = Place.objects.all()
     place_count = place.count()
-
     users = User.objects.all()
     card_count = users.count()
 
+
     user_count = users.filter(is_staff=0).count()
     admin_count = users.filter(is_staff=1).count()
-
+    
     user_info = users.filter(is_staff=0)
     admin_info = users.filter(is_staff=1)
 
@@ -46,6 +41,7 @@ def admin_dashboard(request):
         'activate_adminhome': 'active bg-primary'
     }
     return render(request, 'admins/admins_home.html', context)
+
 
 @login_required(login_url='login')
 @admin_only
@@ -116,6 +112,7 @@ def add_place(request):
 
     return render(request, 'admins/add_place.html', context)
 
+
 @login_required(login_url='login')
 @admin_only
 def show_place(request):
@@ -141,7 +138,8 @@ def get_users(request):
 
 
 # Showing all admins
-
+@login_required(login_url='login')
+@admin_only
 def get_admins(request):
     admins = User.objects.filter(is_staff=1).order_by('-id')
     context = {
@@ -152,13 +150,16 @@ def get_admins(request):
 
 
 # Promote Users
-
+@login_required(login_url='login')
+@admin_only
 def promote_user(request, user_id):
     user = User.objects.get(id=user_id)
     user.is_staff = True
     user.save()
     messages.add_message(request, messages.SUCCESS, 'Travellers promoted to Site Admin!')
     return redirect('/admins/showadmins')
+
+
 
 
 # Promote Users
@@ -171,6 +172,7 @@ def demote_admin(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'Next admin demoted to travellers!')
     return redirect('/admins/showusers')
 
+
 @login_required(login_url='login')
 @admin_only
 def deactivate_user(request, user_id):
@@ -179,6 +181,7 @@ def deactivate_user(request, user_id):
     user.save()
     messages.add_message(request, messages.SUCCESS, 'User Account Deactivated!')
     return redirect('/admins/showusers')
+
 
 @login_required(login_url='login')
 @admin_only
@@ -189,6 +192,7 @@ def deactivate_admin(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'Admin Account Deactivated!')
     return redirect('/admins/showadmins')
 
+
 @login_required(login_url='login')
 @admin_only
 def reactive_user(request, user_id):
@@ -198,6 +202,7 @@ def reactive_user(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'User Account is reactivated!')
     return redirect('/admins/showusers')
 
+
 @login_required(login_url='login')
 @admin_only
 def reactive_admin(request, user_id):
@@ -206,6 +211,7 @@ def reactive_admin(request, user_id):
     user.save()
     messages.add_message(request, messages.SUCCESS, 'Admin Account is reactivated!')
     return redirect('/admins/showadmins')
+
 
 @login_required(login_url='login')
 @admin_only
@@ -220,6 +226,7 @@ def booking_date(request):
     }
     return render(request, 'admins/bookingdata.html', context)
 
+
 @login_required(login_url='login')
 @admin_only
 def issued_id(request):
@@ -230,6 +237,7 @@ def issued_id(request):
     }
     return render(request, 'admins/issuedid.html', context)
 
+
 @login_required(login_url='login')
 @admin_only
 def contact_form(request):
@@ -239,11 +247,13 @@ def contact_form(request):
     }
     return render(request, 'admins/contactform.html', context)
 
+
 @login_required(login_url='login')
 @admin_only
 def logout_view(request):
     logout(request)
     return redirect('/')
+
 
 @login_required(login_url='login')
 @admin_only
@@ -255,6 +265,7 @@ def update_status(request, pk):
         return redirect('/admins/bookingdata')
 
     return render(request, 'admins/update_status.html', {'status': form})
+
 
 @login_required(login_url='login')
 @admin_only
@@ -273,11 +284,11 @@ def add_admin(request):
     }
     return render(request, 'admins/add_admin.html', context)
 
+
 @login_required(login_url='login')
 @admin_only
 def update_place(request, place_id):
     place = Place.objects.get(id=place_id)
-
     if request.method == "POST":
         place.dest_name = request.POST.get('asp_name')
         place.dest_price = request.POST.get('asp_price')
@@ -294,6 +305,7 @@ def update_place(request, place_id):
         'place': place
     }
     return render(request, 'admins/update_place.html', context)
+
 
 @login_required(login_url='login')
 @admin_only

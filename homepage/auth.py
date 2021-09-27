@@ -1,20 +1,16 @@
 from django.shortcuts import redirect
 
 
-# to check if the user is logged in or not
+# For visitor as unauthenticated user
 def unauthenticated_user(view_function):
     def wrapper_function(request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('/dashboard')
         else:
             return view_function(request, *args, **kwargs)
-
     return wrapper_function
 
-
 # check if the user is admin
-# and if the user is admin, it gives access to admin pages
-# and if the user is not admin, it redirects to user dashboard
 def admin_only(view_function):
     def wrapper_function(request, *args, **kwargs):
         if request.user.is_staff:
@@ -25,9 +21,8 @@ def admin_only(view_function):
     return wrapper_function
 
 
-# check if the user is normal user
-# and if the user is normal user, it gives access to user pages
-# and if the user is not normal user, it redirects to admin dashboard
+
+# check if the user is travellers
 def user_only(view_function):
     def wrapper_function(request, *args, **kwargs):
         if request.user.is_staff:
@@ -36,3 +31,6 @@ def user_only(view_function):
             return view_function(request, *args, **kwargs)
 
     return wrapper_function
+
+
+

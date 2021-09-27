@@ -1,4 +1,5 @@
 {% extends 'main_layout.html' %}
+{% load bootstrap %}
 {% load static %}
 
 {% block header %}
@@ -7,6 +8,13 @@
             <div class="intro">
                 <h1 class="display-2 fw-semibold py-4 ">Suggested places for you</h1>
             </div>
+
+
+            <form action="" class="form" method="get">
+                {{ place_filter.form | bootstrap }}
+                <button class="btn btn-primary btn-sm mt-3 mb-5" type="submit">Search destinations
+                </button>
+            </form>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 {% if places %}
                     {% for place in places %}
@@ -36,13 +44,17 @@
                                                     <span class="fa fa-star"></span>
                                                 </div>
                                                 <div class="text-success">
-                                                   <h5>Region: {{ place.dest_type }}</h5>
+                                                    <h5>Region: {{ place.dest_type }}</h5>
                                                 </div>
 
                                             </div>
                                             <div class="d-flex justify-content-between">
-                                                <a href="/dashboard/details/{{ place.dest_name }}"><button class="btn btn-primary">Show More Info</button></a>
-                                                <h5 class="mt-1"><span class="fa fa-map-marker text-success"></span> {{ place.dest_location }}</h5>
+                                                <a href="/dashboard/details/{{ place.dest_name }}">
+                                                    <button class="btn btn-primary">Show More Info</button>
+                                                </a>
+                                                <h5 class="mt-1"><span
+                                                        class="fa fa-map-marker text-success"></span> {{ place.dest_location }}
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>

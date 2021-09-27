@@ -6,7 +6,6 @@
     })
 })()
 
-
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
@@ -14,11 +13,11 @@ $(document).ready(function () {
 });
 
 
-//Hello new for index
+
+
+
 $(document).ready(() => {
-
     let navText = ["<i class='bx bx-chevron-left'></i>", "<i class='bx bx-chevron-right'></i>"]
-
     $('#hero-carousel').owlCarousel({
         items: 1,
         dots: false,
@@ -33,4 +32,5 @@ $(document).ready(() => {
 // Data Picker Initialization
 $('.datepicker').pickadate();
 
-//Charts
+
+

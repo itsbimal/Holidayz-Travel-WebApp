@@ -5,9 +5,15 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from admins.models import Country, Place, Offer
-from dashboard.models import Profile, Watchlist, Booking, Booking_Draft
+from dashboard.models import Profile, Watchlist, Booking
 from homepage.auth import user_only
+from .filters import PlaceFilter
 from .forms import ProfileForm
+from django.http import JsonResponse
+
+
+
+
 # from .filters import CountryFilter
 
 
@@ -18,6 +24,7 @@ def index_page(request):
         'activate_home': 'active border-bottom active-class'
     }
     return render(request, 'dashboard/index.html', context)
+
 
 @login_required(login_url='login')
 @user_only
@@ -33,6 +40,7 @@ def ecard(request):
         'activate_ecard': 'active border-bottom'
     }
     return render(request, 'dashboard/ecard.html', context)
+
 
 @login_required(login_url='login')
 @user_only
@@ -53,7 +61,7 @@ def profile(request):
     profile = request.user.profile
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST,request.FILES, instance=profile)
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Profile has been refined successfully!')
@@ -68,11 +76,15 @@ def profile(request):
 @user_only
 def show_places(request):
     place = Place.objects.all().order_by('-id')
+    place_filter = PlaceFilter(request.GET,queryset=place)
+    place_final = place_filter.qs
     context = {
-        'places': place,
+        'places': place_final,
+        'place_filter': place_filter,
         'activate_place': 'active border-bottom active-class h1text'
     }
     return render(request, 'dashboard/showplaces.html', context)
+
 
 @login_required(login_url='login')
 @user_only
@@ -84,6 +96,7 @@ def place_details(request, name):
     }
     return render(request, 'dashboard/details.html', context)
 
+
 @login_required(login_url='login')
 @user_only
 def destination_list(request, c_id):
@@ -94,6 +107,7 @@ def destination_list(request, c_id):
     }
     return render(request, 'dashboard/places.html', context)
 
+
 @login_required(login_url='login')
 @user_only
 def watchlist(request):
@@ -102,6 +116,7 @@ def watchlist(request):
     places = Place.objects.get(id=place_id)
     Watchlist(user=user, place=places).save()
     return redirect('/')
+
 
 @login_required(login_url='login')
 @user_only
@@ -119,7 +134,7 @@ def show_watchlist(request):
 @login_required(login_url='login')
 @user_only
 def areyou_sure(request):
-    return render(request,'dashboard/sure.html')
+    return render(request, 'dashboard/sure.html')
 
 
 @login_required(login_url='login')
@@ -137,24 +152,29 @@ def booking(request, place_id):
         offer = request.POST.get('bookin_offers')
         total_price = int(total_person) * int(place_price)
         print(total_price)
-
-        bookings = Booking.objects.create(place=place,
-                                          user=user,
-                                          offer_id=offer,
-                                          total_person=total_person,
-                                          total_price=total_price,
-                                          booked_date=booked_date,
-                                          status="In-Review"
-                                          )
+        bookings = Booking.objects.create(place=place, user=user, offer_id=offer,
+                                          total_person=total_person, total_price=total_price,
+                                          booked_date=booked_date, status="In-Review")
         if bookings:
             return redirect('/dashboard/summary')
-
-
     context = {
         'offers': offers,
         'infos': place_info
     }
     return render(request, 'dashboard/booking.html', context)
+
+
+def get_json_offer_data(request):
+    offer = list(Offer.objects.values())
+    return JsonResponse({'data': offer})
+
+
+def get_json_model_data(request,place_id, *args, **kwargs):
+    place = Place.objects.get(id=place_id)
+    selected_offer = kwargs.get('id')
+    obj_models = list(Offer.objects.filter(id=selected_offer.values()))
+    return JsonResponse({'data':obj_models})
+
 
 @login_required(login_url='login')
 @user_only
@@ -167,3 +187,7 @@ def booking_summary(request):
     }
 
     return render(request, 'dashboard/summary.html', context)
+
+
+def error_404_view(request, exception):
+    return render(request, '404.html')

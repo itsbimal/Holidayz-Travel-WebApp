@@ -10,9 +10,10 @@ class SignupForm(UserCreationForm):
         model =User
         fields = ('first_name','last_name','username','email','password1','password2')
 
-
 class ContactForms(ModelForm):
     class Meta:
         model = ContactForm
         fields = '__all__'
+
+
 

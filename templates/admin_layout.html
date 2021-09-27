@@ -23,7 +23,7 @@
                 <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
-        <a href="/admins"><h4 class="h1text">HolidayZ Travels & Tours</h4></a>
+        <a href="/admins"><h4 class="h1text text-center">HolidayZ Travels & Tours</h4></a>
         <ul class="navbar-nav flex-nowrap ms-auto">
             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
                                                                 aria-expanded="false" data-bs-toggle="dropdown"
@@ -42,8 +42,7 @@
             </li>
 
             <div class="d-none d-sm-block topbar-divider"></div>
-            <button class="btn btn-sm hover"><a href="/">What visitors see</a></button>
-            <button class="btn btn-sm hover text-danger"><a href="/">Admin {{ request.user.username }}</a></button>
+            <button class="btn btn-sm hover text-danger"><a href="/">Welcome, Admin @{{ request.user.username }}</a></button>
 
         </ul>
     </div>

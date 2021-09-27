@@ -12,3 +12,9 @@ class ProfileForm(ModelForm):
         model = Profile
         fields = "__all__"
         exclude = ['user','username','email','ecard_no','ecard_cvv']
+
+
+
+
+
+

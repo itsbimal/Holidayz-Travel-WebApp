@@ -6,10 +6,13 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('admins/', include('admins.urls')),
-
 ]
 
+
+
+
+
+handler404 = "dashboard.views.error_404_view"

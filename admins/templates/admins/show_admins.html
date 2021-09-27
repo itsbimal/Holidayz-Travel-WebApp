@@ -9,10 +9,10 @@
         <div class="container-fluid w-75 mb-4">
             <h3 class="text-dark mb-4 display-5 mt-lg-2">Showing all active admins</h3>
             <div class="card">
-                <div class="card-header py-3 d-flex">
-                    <p class="text-primary m-2 fw-bold ">All Admin Information</p>
-                    <a href="/admins/addadmin" class="btn btn-primary ms-auto">Add new Admin</a>
-                </div>
+            <div class="card-header d-flex justify-content-between" style="padding-top: 20px">
+                <p class="text-primary fs-4">All Admin Information</p>
+                <p><button class="btn btn-primary"><a href="/admins/addadmin">Add new Admin</a></button></p>
+            </div>
                 {% for m in messages %}
                     <div class="alert alert-success alert-dismissible fade show d-flex" role="alert">
                         <strong>Great job Admin, </strong> {{ m.message }}

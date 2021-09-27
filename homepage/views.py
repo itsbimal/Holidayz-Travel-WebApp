@@ -50,9 +50,7 @@ def register(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
-            Profile.objects.create(user=user, username=user.username,
-                                   email=user.email)
-
+            Profile.objects.create(user=user,firstname=user.first_name,lastname=user.last_name, username=user.username,email=user.email)
             messages.add_message(request, messages.SUCCESS, "User has been created successfully!")
             return redirect('/login')
         else:
@@ -64,6 +62,7 @@ def register(request):
         'form': form
     }
     return render(request, 'homepage/register.html', context)
+
 
 @unauthenticated_user
 def country_list(request):
@@ -98,3 +97,6 @@ def contact(request):
         'form': ContactForms
     }
     return render(request, 'homepage/contact.html', context)
+
+
+

@@ -136,21 +136,25 @@
                                 <div class="col-12">
                                     <label for="" class="form-label">Enter the number of person on your journey</label>
                                     <input type="number" class="form-control" id="email" placeholder="Enter the number"
-                                           value="{{ i. }}" name="bookin_totalperson">
+                                           value="{{ i.total_person }}" name="bookin_totalperson">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="bookin_offers" class="form-label">Select your desired package</label>
+
                                     <select class="form-control w-100" id="bookin_offers" name="bookin_offers">
-                                        <option selected>Choose the package</option>
                                         {% for offer in offers %}
-                                            <option value="{{ offer.id }}">{{ offer.offer_name }}</option>
+                                            <option value="{{ offer.id }}">Your default selected package: {{ offer.id }}</option>
                                         {% endfor %}
+                                    </select>
+
+                                    <select class="form-control w-100" id="bookin_offer" name="bookin_offer">
+
                                     </select>
                                 </div>
 
                                 <div class="col-md-5 w-100">
-                                    <label for="address" class="form-label fw-bold">Showing included package</label>
+                                    <label for="address" class="form-label fw-bold">Showing included benefits</label>
                                     <table class="table table-striped">
                                         <thead>
                                         <tr>
@@ -187,6 +191,9 @@
             </form>
         </main>
     </div>
-{% endblock %}
+{% endblock header %}
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/offer.js' %}"></script>
+{% endblock js_file %}
 
 

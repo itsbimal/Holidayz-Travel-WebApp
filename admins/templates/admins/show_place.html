@@ -9,9 +9,9 @@
         <div class="container-fluid mb-4">
             <h3 class="text-dark mb-4 display-6 mt-lg-2">Showing all your destination</h3>
             <div class="card shadow">
-                <div class="card-header py-3 d-flex">
+                <div class="card-header py-3 d-flex justify-content-between">
                     <p class="text-primary m-0 fw-bold">Destination Information</p>
-                    <a href="/admins/addplace" class="btn btn-primary ms-auto">Add new destination</a>
+                    <p><button class="btn btn-primary"><a href="/admins/addplace">Add new destinations</a></button></p>
                 </div>
                 {% for m in messages %}
                     <div class="alert alert-success alert-dismissible fade show justify-content-between" role="alert">

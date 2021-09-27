@@ -31,3 +31,5 @@ class UpdatePlace(ModelForm):
         fields = '__all__'
 
 
+
+

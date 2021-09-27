@@ -9,9 +9,10 @@
         <div class="container-fluid w-75 mb-4">
             <h3 class="text-dark mb-4 display-5 mt-lg-2">Showing all travellers details</h3>
             <div class="card">
-                <div class="card-header py-3 d-flex">
-                    <p class="text-primary m-2 fw-bold ">All Travellers Information</p>
-                    <a href="" class="btn btn-primary ms-auto">You can control travellers account</a>
+                <div class="card-header d-flex justify-content-between" style="padding-top: 20px">
+                    <p class="text-primary fs-4">All Travellers Information</p>
+                    <p><a href="" class="btn btn-primary ms-auto">You can control travellers account</a></p>
+
                 </div>
                 {% for m in messages %}
                     <div class="alert alert-success alert-dismissible fade show justify-content-between" role="alert">
@@ -63,12 +64,14 @@
                                     <td>{{ i.is_active }}</td>
                                     <td>{{ i.is_staff }}</td>
                                     <td>
-{#                                        <a class="btn btn-primary btn-sm" href="/admins/promote_user/{{ i.id }}"#}
-{#                                           onclick="return confirm('Are you sure you want to promote?')">Promote to#}
-{#                                            admin</a>#}
+                                        {#                                        <a class="btn btn-primary btn-sm" href="/admins/promote_user/{{ i.id }}"#}
+                                        {#                                           onclick="return confirm('Are you sure you want to promote?')">Promote to#}
+                                        {#                                            admin</a>#}
                                         <a class="btn btn-danger btn-sm" href="/admins/deactivate_user/{{ i.id }}"
                                            onclick="return confirm('Are you sure bro?')">Deactivate</a>
-                                        <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure want to Reactive?')" href="/admins/reactive_user/{{ i.id }}">Reactive</a>
+                                        <a class="btn btn-success btn-sm"
+                                           onclick="return confirm('Are you sure want to Reactive?')"
+                                           href="/admins/reactive_user/{{ i.id }}">Reactive</a>
 
                                     </td>
                                 </tr>

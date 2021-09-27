@@ -23,5 +23,6 @@ urlpatterns = [
     path('issuedid/', views.issued_id),
     path('contact/', views.contact_form),
     path('logout/', views.logout_view),
-
 ]
+
+
