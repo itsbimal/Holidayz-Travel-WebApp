@@ -37,7 +37,7 @@ def login(request):
                 return redirect('/admins')
 
         else:
-            messages.info(request, "Invalid Login details! Unable to login")
+            messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
             return render(request, 'homepage/login.html')
 
     else:

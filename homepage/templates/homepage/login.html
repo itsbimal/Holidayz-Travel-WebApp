@@ -11,7 +11,7 @@
         <div class="login-reg">
             <div class="title-text">
                 <div class="title login">
-{#                    <img src="{% static 'images/login_logo.png' %}" alt="logo" class="logo w-75">#}
+                    {#                    <img src="{% static 'images/login_logo.png' %}" alt="logo" class="logo w-75">#}
                     <img src="{% static 'images/login.gif' %}" alt="logo" class="logo w-50">
                     <h1 class="display-6 fw-bold text-primary h1text">Secure Server</h1>
                 </div>
@@ -40,10 +40,22 @@
                             Not a member? <a href="/register">Signup now</a>
                         </div>
 
-                        {% for message in messages %}
-                            <div class="alert alert-success mt-3" role="alert">
-                                <p id="messages">{{ message }} <i class="fa fa-check-circle" aria-hidden="true"></i></p>
-                            </div>
+                        {% for msg in messages %}
+                            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ msg }}<i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+                            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ msg }} <i class="fa fa-crosshairs" aria-hidden="true"></i>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+
                         {% endfor %}
                     </form>
 
