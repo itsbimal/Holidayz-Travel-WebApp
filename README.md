@@ -1,2 +1,6 @@
-# stw205cde-batch28ab-finalassignment-itsbimal
-stw205cde-batch28ab-finalassignment-itsbimal created by GitHub Classroom
+HolidayZ - Travel Website
+Live on: www.holidayz.live
+
+Creater and publisher:
+Bimal Shrestha
+
